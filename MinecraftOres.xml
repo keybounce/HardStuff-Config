@@ -450,7 +450,7 @@
                     <!-- This is a big enough radius to guarantee placement at any straight angle in 3d. -->
                     <Setting name='SegmentRadius' avg='1.8 ' range='0' />
                     <!-- Add some extra length, to make them even more noticeable -->
-                    <Setting BranchLength=':= 1.5 * _default_ ' />
+                    <Setting name='BranchLength' avg=':= 1.5 * _default_ ' />
                 </Veins>
                 
 
@@ -493,7 +493,7 @@
                     <!-- This is a big enough radius to guarantee placement at any straight angle in 3d. -->
                     <Setting name='SegmentRadius' avg='1.8 ' range='0' />
                     <!-- Add some extra length, to make them even more noticeable -->
-                    <Setting BranchLength=':= 1.5 * _default_ ' />
+                    <Setting name='BranchLength' avg=':= 1.5 * _default_ ' />
                 </Veins>
             
             </IfCondition>   
