@@ -433,13 +433,13 @@
                     <!-- Remember, these segments are tiny! -->
                     <Setting name='SegmentRadius' avg=':= 1.0 * _default_' range=':= 1.0 * _default_' />
                     <!-- Center of the motherlode is the big stuff, edge is one notch less -->
-                    <Setting name='MotherlodeSize' avg=':= 0.85 * default' range='_default_' />
+                    <Setting name='MotherlodeSize' avg=':= 0.85 * _default_' range='_default_' />
                 </Veins>
                 <Veins name='IronVeins2' inherits='CustomizedBigIron' block='HarderOres:ore_iron:11' >
                     <!-- Start forcing these veins to be bigger! -->
                     <Setting name='SegmentRadius' avg=':= min(0.1, 2.0 * _default_)' range=':= min(0, 1.25 * _default_)' />
                     <!-- Center of the motherlode is the big stuff, edge is one notch less -->
-                    <Setting name='MotherlodeSize' avg=':= 1.0 * default' range='_default_' />
+                    <Setting name='MotherlodeSize' avg=':= 1.0 * _default_' range='_default_' />
                 </Veins>
                 <Veins name='IronVeins3' inherits='CustomizedBigIron' block='HarderOres:ore_iron:6' >
                     <!-- Now the segments are noticeable -->
@@ -476,13 +476,13 @@
                     <!-- Remember, these segments are tiny! -->
                     <Setting name='SegmentRadius' avg=':= 1.0 * _default_' range=':= 1.0 * _default_' />
                     <!-- Center of the motherlode is the big stuff, edge is one notch less -->
-                    <Setting name='MotherlodeSize' avg=':= 0.85 * default' range='_default_' />
+                    <Setting name='MotherlodeSize' avg=':= 0.85 * _default_' range='_default_' />
                 </Veins>
                 <Veins name='IronVeinsCold2' inherits='CustomizedBigIronCold' block='HarderOres:ore_iron:11' >
                     <!-- Start forcing these veins to be bigger! -->
                     <Setting name='SegmentRadius' avg=':= min(0.1, 2.0 * _default_)' range=':= min(0, 1.25 * _default_)' />
                     <!-- Center of the motherlode is the big stuff, edge is one notch less -->
-                    <Setting name='MotherlodeSize' avg=':= 1.0 * default' range='_default_' />
+                    <Setting name='MotherlodeSize' avg=':= 1.0 * _default_' range='_default_' />
                 </Veins>
                 <Veins name='IronVeinsCold3' inherits='CustomizedBigIronCold' block='HarderOres:ore_iron:6' >
                     <!-- Now the segments are noticeable -->
