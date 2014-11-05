@@ -429,6 +429,9 @@
                              range='10.5' type='normal' scaleTo='sealevel'/>
                     <!-- <Setting name='BranchHeightLimit' avg='10.5'/> -->
                     <Setting name='SegmentRadius' avg=':= ironSize * _default_' range=':= ironSize * _default_'/>
+		    <ReplacesOre block='stone'/>
+		    <Replaces block='minecraft:gravel'/>
+		    <Replaces block='minecraft:dirt'/>
                 </VeinsPreset>
                 <Veins name='IronVeins1' inherits='CustomizedBigIron' block='HarderOres:ore_iron:15' >
                     <seed> 72369 </seed> <!-- Arbitrary; keep consistent -->
@@ -437,7 +440,7 @@
                     <!-- Center of the motherlode is the big stuff, edge is one notch less -->
                     <Setting name='MotherlodeSize' avg=':= 0.85 * _default_' range=':= _default_' />
                 </Veins>
-                <Veins name='IronVeins2' inherits='CustomizedBigIron' block='HarderOres:ore_iron:11' >
+                <Veins name='IronVeins2' inherits='CustomizedBigIron' block='HarderOres:ore_iron:9' >
                     <seed> 72369 </seed> <!-- Arbitrary; keep consistent -->
                     <!-- Start forcing these veins to be wider! -->
                     <Setting name='SegmentRadius' avg=':= min(0.2, 2.0 * _default_)' range=':= min(0, 1.25 * _default_)' />
@@ -457,6 +460,20 @@
                     <Setting name='SegmentRadius' avg='0.8 ' range='0' />
                     <!-- Add some extra length, to make them even more noticeable -->
                     <Setting name='BranchLength' avg=':= 1.5 * _default_ ' />
+                    <Veins name='IronHintVeins' block='HarderOres:ore_iron:1' inherits='PresetHintVeins'>
+                        <DrawWireframe>:=drawWireframes</DrawWireframe>
+                        <WireframeColor>0x40221100</WireframeColor>
+                        <Setting name='MotherlodeFrequency' avg=':= _default_' range=':= _default_'/>   
+                        <Setting name='MotherlodeRangeLimit' avg=':= ironSize * _default_' range=':= ironSize * _default_'/>              
+                        <ReplacesOre block='stone'/>
+                        <Replaces block='minecraft:dirt'/>
+                        <Replaces block='minecraft:gravel'/>
+                        <Replaces block='minecraft:clay'/>
+                        <Replaces block='minecraft:sandstone'/>
+                        <Replaces block='minecraft:grass' />
+                        <Replaces block='minecraft:mycelium' />
+                        <Replaces block='minecraft:sand' />
+                    </Veins>                         
                 </Veins>
                 
                 
@@ -485,7 +502,7 @@
                     <!-- Center of the motherlode is the big stuff, edge is one notch less -->
                     <Setting name='MotherlodeSize' avg=':= 0.85 * _default_' range=':= _default_' />
                 </Veins>
-                <Veins name='IronVeins2Cold' inherits='CustomizedBigIronCold' block='HarderOres:ore_iron:11' >
+                <Veins name='IronVeins2Cold' inherits='CustomizedBigIronCold' block='HarderOres:ore_iron:9' >
                     <seed> 72369 </seed> <!-- Arbitrary; keep consistent -->
                     <!-- Start forcing these veins to be wider! -->
                     <Setting name='SegmentRadius' avg=':= min(0.2, 2.0 * _default_)' range=':= min(0, 1.25 * _default_)' />
