@@ -1,4 +1,5 @@
 <!--************************  CustomOreGen Minecraft Ores Module ****************
+:set ai et ts=4 sw=4
 *
 *   This file contains Presets, Options, and Distributions for the 7
 *   vanilla minecraft ores:
@@ -430,30 +431,35 @@
                     <Setting name='SegmentRadius' avg=':= ironSize * _default_' range=':= ironSize * _default_'/>
                 </VeinsPreset>
                 <Veins name='IronVeins1' inherits='CustomizedBigIron' block='HarderOres:ore_iron:15' >
-                    <!-- Remember, these segments are tiny! -->
+                    <seed> 72369 </seed> <!-- Arbitrary; keep consistent -->
+                    <!-- Remember, these segments are thin! -->
                     <Setting name='SegmentRadius' avg=':= 1.0 * _default_' range=':= 1.0 * _default_' />
                     <!-- Center of the motherlode is the big stuff, edge is one notch less -->
                     <Setting name='MotherlodeSize' avg=':= 0.85 * _default_' range=':= _default_' />
                 </Veins>
                 <Veins name='IronVeins2' inherits='CustomizedBigIron' block='HarderOres:ore_iron:11' >
-                    <!-- Start forcing these veins to be bigger! -->
-                    <Setting name='SegmentRadius' avg=':= min(0.1, 2.0 * _default_)' range=':= min(0, 1.25 * _default_)' />
+                    <seed> 72369 </seed> <!-- Arbitrary; keep consistent -->
+                    <!-- Start forcing these veins to be wider! -->
+                    <Setting name='SegmentRadius' avg=':= min(0.2, 2.0 * _default_)' range=':= min(0, 1.25 * _default_)' />
                     <!-- Center of the motherlode is the big stuff, edge is one notch less -->
                     <Setting name='MotherlodeSize' avg=':= 1.0 * _default_' range=':= _default_' />
                 </Veins>
                 <Veins name='IronVeins3' inherits='CustomizedBigIron' block='HarderOres:ore_iron:6' >
+                    <seed> 72369 </seed> <!-- Arbitrary; keep consistent -->
                     <!-- Now the segments are noticeable -->
-                    <Setting name='SegmentRadius' avg=':= min(0.7, 4.0 * _default_)' range=':= min(0, 2.0 * _default_)' />
+                    <Setting name='SegmentRadius' avg=':= min(0.4, 4.0 * _default_)' range=':= min(0, 2.0 * _default_)' />
                 </Veins>
                 <Veins name='IronVeins4' inherits='CustomizedBigIron' block='HarderOres:ore_iron:1' >
-                    <!-- And the segments are now fully joined with the "junk" level ore -->
-                    <!-- This is a big enough radius to guarantee placement at any straight angle in 3d. -->
-                    <Setting name='SegmentRadius' avg='1.8 ' range='0' />
+                    <seed> 72369 </seed> <!-- Arbitrary; keep consistent -->
+                    <!-- And the segments are now "fully" joined with the "junk" level ore -->
+                    <!-- This is a big enough radius to be "likely" to be joined most of the time -->
+                    <!-- NB: It is possible for a diagonal 3d line to skip a few. -->
+                    <Setting name='SegmentRadius' avg='0.8 ' range='0' />
                     <!-- Add some extra length, to make them even more noticeable -->
                     <Setting name='BranchLength' avg=':= 1.5 * _default_ ' />
                 </Veins>
                 
-
+                
                 <VeinsPreset name='CustomizedBigIronCold' inherits='CustomizedBigIron'>
                     <Description> A climate zone is about 16 biomes. 5 times as common should have 1-2
                                   of these per climate zone. Ideally, I'd make it one per, but the
@@ -472,26 +478,31 @@
                  idea that I never fully fleshed out before. I want to apply these new alterations
                  to 4 other alterations. I cannot change their inherits, so I have to duplicate stuff. -->
             
-                <Veins name='IronVeinsCold1' inherits='CustomizedBigIronCold' block='HarderOres:ore_iron:15' >
-                    <!-- Remember, these segments are tiny! -->
+                <Veins name='IronVeins1Cold' inherits='CustomizedBigIronCold' block='HarderOres:ore_iron:15' >
+                    <seed> 72369 </seed> <!-- Arbitrary; keep consistent -->
+                    <!-- Remember, these segments are thin! -->
                     <Setting name='SegmentRadius' avg=':= 1.0 * _default_' range=':= 1.0 * _default_' />
                     <!-- Center of the motherlode is the big stuff, edge is one notch less -->
                     <Setting name='MotherlodeSize' avg=':= 0.85 * _default_' range=':= _default_' />
                 </Veins>
-                <Veins name='IronVeinsCold2' inherits='CustomizedBigIronCold' block='HarderOres:ore_iron:11' >
-                    <!-- Start forcing these veins to be bigger! -->
-                    <Setting name='SegmentRadius' avg=':= min(0.1, 2.0 * _default_)' range=':= min(0, 1.25 * _default_)' />
+                <Veins name='IronVeins2Cold' inherits='CustomizedBigIronCold' block='HarderOres:ore_iron:11' >
+                    <seed> 72369 </seed> <!-- Arbitrary; keep consistent -->
+                    <!-- Start forcing these veins to be wider! -->
+                    <Setting name='SegmentRadius' avg=':= min(0.2, 2.0 * _default_)' range=':= min(0, 1.25 * _default_)' />
                     <!-- Center of the motherlode is the big stuff, edge is one notch less -->
                     <Setting name='MotherlodeSize' avg=':= 1.0 * _default_' range=':= _default_' />
                 </Veins>
-                <Veins name='IronVeinsCold3' inherits='CustomizedBigIronCold' block='HarderOres:ore_iron:6' >
+                <Veins name='IronVeins3Cold' inherits='CustomizedBigIronCold' block='HarderOres:ore_iron:6' >
+                    <seed> 72369 </seed> <!-- Arbitrary; keep consistent -->
                     <!-- Now the segments are noticeable -->
-                    <Setting name='SegmentRadius' avg=':= min(0.7, 4.0 * _default_)' range=':= min(0, 2.0 * _default_)' />
+                    <Setting name='SegmentRadius' avg=':= min(0.4, 4.0 * _default_)' range=':= min(0, 2.0 * _default_)' />
                 </Veins>
-                <Veins name='IronVeinsCold4' inherits='CustomizedBigIronCold' block='HarderOres:ore_iron:1' >
-                    <!-- And the segments are now fully joined with the "junk" level ore -->
-                    <!-- This is a big enough radius to guarantee placement at any straight angle in 3d. -->
-                    <Setting name='SegmentRadius' avg='1.8 ' range='0' />
+                <Veins name='IronVeins4Cold' inherits='CustomizedBigIronCold' block='HarderOres:ore_iron:1' >
+                    <seed> 72369 </seed> <!-- Arbitrary; keep consistent -->
+                    <!-- And the segments are now "fully" joined with the "junk" level ore -->
+                    <!-- This is a big enough radius to be "likely" to be joined most of the time -->
+                    <!-- NB: It is possible for a diagonal 3d line to skip a few. -->
+                    <Setting name='SegmentRadius' avg='0.8 ' range='0' />
                     <!-- Add some extra length, to make them even more noticeable -->
                     <Setting name='BranchLength' avg=':= 1.5 * _default_ ' />
                 </Veins>
