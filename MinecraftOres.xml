@@ -429,9 +429,9 @@
                              range='10.5' type='normal' scaleTo='sealevel'/>
                     <!-- <Setting name='BranchHeightLimit' avg='10.5'/> -->
                     <Setting name='SegmentRadius' avg=':= ironSize * _default_' range=':= ironSize * _default_'/>
-		    <ReplacesOre block='stone'/>
-		    <Replaces block='minecraft:gravel'/>
-		    <Replaces block='minecraft:dirt'/>
+                    <ReplacesOre block='stone'/>
+                    <Replaces block='minecraft:gravel'/>
+                    <Replaces block='minecraft:dirt'/>
                 </VeinsPreset>
                 <Veins name='IronVeins1' inherits='CustomizedBigIron' block='HarderOres:ore_iron:15' >
                     <seed> 72369 </seed> <!-- Arbitrary; keep consistent -->
