@@ -22,16 +22,16 @@
     **************************************************************************-->
     <ConfigSection>
     
-        <OptionDisplayGroup name='groupStdOres' displayName='Minecraft Ores' displayState='shown'>
+        <OptionDisplayGroup name='groupHarderOres' displayName='Harder Ores' displayState='shown'>
             <Description> 
-                Distribution options for the vanilla Minecraft ores.
+                Distribution options for the vanilla Minecraft ores in the harder variety.
             </Description>
         </OptionDisplayGroup>
 
         <!--*******************   Coal   ***********************-->
         <ConfigSection>
         
-            <OptionChoice name='coalDist' default='layeredVeins' displayState='shown' displayGroup='groupStdOres'>
+            <OptionChoice name='hardcoalDist' default='layeredVeins' displayState='shown' displayGroup='groupHarderOres'>
                 <Description> Controls how Coal is generated </Description>
                 <DisplayName>Coal Type</DisplayName>
                 <Choice value='layeredVeins' displayValue='Veins'>
@@ -52,12 +52,12 @@
                 <Choice value='none' displayValue='None' description='No coal is generated at all.'/>
             </OptionChoice>
             
-            <OptionNumeric name='coalFreq' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupStdOres'>
+            <OptionNumeric name='hardcoalFreq' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupHarderOres'>
                 <Description> Frequency multiplier for Coal distributions </Description>
                 <DisplayName>Coal Freq.</DisplayName>
             </OptionNumeric> 
             
-            <OptionNumeric name='coalSize' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupStdOres'>
+            <OptionNumeric name='hardcoalSize' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupHarderOres'>
                 <Description> Size multiplier for Coal distributions </Description>
                 <DisplayName>Coal Size</DisplayName>
             </OptionNumeric>
@@ -67,7 +67,7 @@
         <!--*******************   Iron   ***********************-->
         <ConfigSection>
             
-            <OptionChoice name='ironDist' default='layeredVeins' displayState='shown' displayGroup='groupStdOres'>
+            <OptionChoice name='hardironDist' default='layeredVeins' displayState='shown' displayGroup='groupHarderOres'>
                 <Description> Controls how Iron is generated </Description>
                 <DisplayName>Iron Type</DisplayName>
                 <Choice value='layeredVeins' displayValue='Veins'>
@@ -88,12 +88,12 @@
                 <Choice value='none' displayValue='None' description='No iron is generated at all.'/>
             </OptionChoice>
             
-            <OptionNumeric name='ironFreq' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupStdOres'>
+            <OptionNumeric name='hardironFreq' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupHarderOres'>
                 <Description> Frequency multiplier for Iron distributions </Description>
                 <DisplayName>Iron Freq.</DisplayName>
             </OptionNumeric>
             
-            <OptionNumeric name='ironSize' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupStdOres'>
+            <OptionNumeric name='hardironSize' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupHarderOres'>
                 <Description> Size multiplier for Iron distributions </Description>
                 <DisplayName>Iron Size</DisplayName>
             </OptionNumeric>    
@@ -103,7 +103,7 @@
         <!--*******************   Gold   ***********************-->
         <ConfigSection>
         
-            <OptionChoice name='goldDist' default='layeredVeins' displayState='shown' displayGroup='groupStdOres'>
+            <OptionChoice name='hardgoldDist' default='layeredVeins' displayState='shown' displayGroup='groupHarderOres'>
                 <Description> Controls how Gold is generated </Description>
                 <DisplayName>Gold Type</DisplayName>
                 <Choice value='layeredVeins' displayValue='Veins'>
@@ -124,12 +124,12 @@
                 <Choice value='none' displayValue='None' description='No gold is generated at all.'/>
             </OptionChoice>
             
-            <OptionNumeric name='goldFreq' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupStdOres'>
+            <OptionNumeric name='hardgoldFreq' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupHarderOres'>
                 <Description> Frequency multiplier for Gold distributions </Description>
                 <DisplayName>Gold Freq.</DisplayName>
             </OptionNumeric>
             
-            <OptionNumeric name='goldSize' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupStdOres'>
+            <OptionNumeric name='hardgoldSize' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupHarderOres'>
                 <Description> Size multiplier for Gold distributions </Description>
                 <DisplayName>Gold Size</DisplayName>
             </OptionNumeric> 
@@ -139,7 +139,7 @@
         <!--*****************   Redstone   *********************-->
         <ConfigSection>        
         
-            <OptionChoice name='redstoneDist' default='layeredVeins' displayState='shown' displayGroup='groupStdOres'>
+            <OptionChoice name='hardredstoneDist' default='layeredVeins' displayState='shown' displayGroup='groupHarderOres'>
                 <Description> Controls how Redstone is generated </Description>
                 <DisplayName>Redstone Type</DisplayName>
                 <Choice value='layeredVeins' displayValue='Veins'>
@@ -160,12 +160,12 @@
                 <Choice value='none' displayValue='None' description='No redstone is generated at all.'/>
             </OptionChoice>
             
-            <OptionNumeric name='redstoneFreq' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupStdOres'>
+            <OptionNumeric name='hardredstoneFreq' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupHarderOres'>
                 <Description> Frequency multiplier for Redstone distributions </Description>
                 <DisplayName>Redstone Freq.</DisplayName>
             </OptionNumeric>
             
-            <OptionNumeric name='redstoneSize' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupStdOres'>
+            <OptionNumeric name='hardredstoneSize' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupHarderOres'>
                 <Description> Size multiplier for Redstone distributions </Description>
                 <DisplayName>Redstone Size</DisplayName>
             </OptionNumeric>    
@@ -175,7 +175,7 @@
         <!--*****************   Diamond   **********************-->
         <ConfigSection> 
         
-            <OptionChoice name='diamondDist' default='layeredVeins' displayState='shown' displayGroup='groupStdOres'>
+            <OptionChoice name='harddiamondDist' default='layeredVeins' displayState='shown' displayGroup='groupHarderOres'>
                 <Description> Controls how Diamonds are generated </Description>
                 <DisplayName>Diamond Type</DisplayName>
                 <Choice value='layeredVeins' displayValue='Veins'>
@@ -196,12 +196,12 @@
                 <Choice value='none' displayValue='None' description='No diamonds are generated at all.'/>
             </OptionChoice>
             
-            <OptionNumeric name='diamondFreq' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupStdOres'>
+            <OptionNumeric name='harddiamondFreq' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupHarderOres'>
                 <Description> Frequency multiplier for Diamond distributions </Description>
                 <DisplayName>Diamond Freq.</DisplayName>
             </OptionNumeric>
             
-            <OptionNumeric name='diamondSize' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupStdOres'>
+            <OptionNumeric name='harddiamondSize' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupHarderOres'>
                 <Description> Size multiplier for Diamond distributions </Description>
                 <DisplayName>Diamond Size</DisplayName>
             </OptionNumeric>    
@@ -211,7 +211,7 @@
         <!--***************   Lapis Lazuli   *******************-->
         <ConfigSection> 
         
-            <OptionChoice name='lapisDist' default='layeredVeins' displayState='shown' displayGroup='groupStdOres'>
+            <OptionChoice name='hardlapisDist' default='layeredVeins' displayState='shown' displayGroup='groupHarderOres'>
                 <Description> Controls how Lapis Lazuli is generated </Description>
                 <DisplayName>Lapis Lazuli Type</DisplayName>
                 <Choice value='layeredVeins' displayValue='Veins'>
@@ -232,12 +232,12 @@
                 <Choice value='none' displayValue='None' description='No lapis lazuli is generated at all.'/>
             </OptionChoice>
             
-            <OptionNumeric name='lapisFreq' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupStdOres'>
+            <OptionNumeric name='hardlapisFreq' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupHarderOres'>
                 <Description> Frequency multiplier for Lapis Lazuli distributions </Description>
                 <DisplayName>Lapis Lazuli Freq.</DisplayName>
             </OptionNumeric>
             
-            <OptionNumeric name='lapisSize' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupStdOres'>
+            <OptionNumeric name='hardlapisSize' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupHarderOres'>
                 <Description> Size multiplier for Lapis Lazuli distributions </Description>
                 <DisplayName>Lapis Lazuli Size</DisplayName>
             </OptionNumeric>    
@@ -247,7 +247,7 @@
         <!--*****************   Emerald   **********************-->
         <ConfigSection>
         
-            <OptionChoice name='emeraldDist' default='layeredVeins' displayState='shown' displayGroup='groupStdOres'>
+            <OptionChoice name='hardemeraldDist' default='layeredVeins' displayState='shown' displayGroup='groupHarderOres'>
                 <Description> Controls how Emeralds are generated </Description>
                 <DisplayName>Emerald Type</DisplayName>
                 <Choice value='layeredVeins' displayValue='Veins'>
@@ -268,12 +268,12 @@
                 <Choice value='none' displayValue='None' description='No emeralds are generated at all.'/>
             </OptionChoice>
             
-            <OptionNumeric name='emeraldFreq' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupStdOres'>
+            <OptionNumeric name='hardemeraldFreq' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupHarderOres'>
                 <Description> Frequency multiplier for Emerald distributions </Description>
                 <DisplayName>Emerald Freq.</DisplayName>
             </OptionNumeric>
             
-            <OptionNumeric name='emeraldSize' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupStdOres'>
+            <OptionNumeric name='hardemeraldSize' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupHarderOres'>
                 <Description> Size multiplier for Emerald distributions </Description>
                 <DisplayName>Emerald Size</DisplayName>
             </OptionNumeric> 
@@ -329,7 +329,7 @@
                     <Description> Equivalent to vanilla minecraft coal distribution </Description>
                     <DrawWireframe>:=drawWireframes</DrawWireframe>
                     <WireframeColor>0x60101010</WireframeColor>
-                    <Setting name='Size' avg=':= 2 * coalSize * _default_'/> 
+                    <Setting name='hardSize' avg=':= 2 * coalSize * _default_'/> 
                     <Setting name='Frequency' avg=':= coalFreq *  _default_'/>
                 </StandardGen> 
             </IfCondition>   
@@ -390,11 +390,11 @@
         <ConfigSection>
         
             <IfCondition condition=':= ironDist = "vanillaStdGen"'>
-                <StandardGen name='IronStandard' block='minecraft:iron_ore' inherits='PresetStandardGen'> 
+                <StandardGen name='IronStandard' block='HarderOres:ore_iron:9' inherits='PresetStandardGen'> 
                     <Description> Equivalent to vanilla minecraft iron distribution </Description>
                     <DrawWireframe>:=drawWireframes</DrawWireframe>
                     <WireframeColor>0x40221100</WireframeColor> 
-                    <Setting name='Size' avg=':= ironSize * _default_'/> 
+                    <Setting name='hardSize' avg=':= ironSize * _default_'/> 
                     <Setting name='Frequency' avg=':= ironFreq * _default_'/>
                     <Setting name='Height' avg='32' range='32' scaleTo='sealevel'/> 
                 </StandardGen> 
@@ -553,24 +553,24 @@
         <ConfigSection>
         
             <IfCondition condition=':= goldDist = "vanillaStdGen"'>
-                <StandardGen name='GoldStandard' block='minecraft:gold_ore' inherits='PresetStandardGen'> 
+                <StandardGen name='GoldStandard' block='HarderOres:ore_gold:9' inherits='PresetStandardGen'> 
                     <Description> Equivalent to vanilla minecraft gold distribution </Description>
                     <DrawWireframe>:=drawWireframes</DrawWireframe>
                     <WireframeColor>0x40443300</WireframeColor> 
-                    <Setting name='Size' avg=':= goldSize * _default_'/> 
+                    <Setting name='hardSize' avg=':= goldSize * _default_'/> 
                     <Setting name='Frequency' avg=':= 0.1 * goldFreq * _default_'/>
                     <Setting name='Height' avg=':= 16/64 * dimension.groundLevel' range=':= 16/64 * dimension.groundLevel'/>
                 </StandardGen> 
             </IfCondition>
                 
             <IfCondition condition=':= goldDist = "layeredVeins"'>
-                <Veins name='GoldVeins' block='minecraft:gold_ore' inherits='PresetLayeredVeins'> 
+                <Veins name='GoldVeins' block='HarderOres:ore_gold:7' inherits='PresetLayeredVeins'> 
                     <Description> 
                         Gold spawns in the height 10-30 range.  The veins are shorter than average,
                         and much rarer overall.  Gold is not easy to find.
                     </Description>  
                     <DrawWireframe>:=drawWireframes</DrawWireframe>
-                    <WireframeColor>0x40443300</WireframeColor> 
+                    <WireframeColor>0x40f0b91d</WireframeColor> 
                     <Setting name='MotherlodeFrequency' avg=':= 0.85 * goldFreq * _default_'/>
                     <Setting name='MotherlodeSize' avg=':= 0.8 * goldSize * _default_' range=':= 0.5 * goldSize * _default_'/>
                     <Setting name='MotherlodeHeight' avg=':= 20/64 * dimension.groundLevel' range=':= 10/64 * dimension.groundLevel' type='normal'/>
@@ -590,20 +590,20 @@
             </IfCondition>
                 
             <IfCondition condition=':= goldDist = "strategicClouds"'>
-                <Cloud name='GoldCloud' block='minecraft:gold_ore' inherits='PresetStrategicCloud'>
+                <Cloud name='GoldCloud' block='HarderOres:ore_gold:15' inherits='PresetStrategicCloud'>
                     <Description>  
                         Diffuse gold cloud surrounded by single-block "hint" veins, found in forest biomes.
                     </Description> 
                     <DrawWireframe>:=drawWireframes</DrawWireframe>
-                    <WireframeColor>0x40443300</WireframeColor> 
+                    <WireframeColor>0x40f0b91d</WireframeColor> 
                     <Setting name='DistributionFrequency' avg=':= 4.5 * goldFreq * _default_'/>
                     <Setting name='CloudRadius' avg=':= 0.8 * goldSize * _default_' range=':= 0.8 * goldSize * _default_'/>
                     <Setting name='CloudThickness' avg=':= 0.8 * goldSize * _default_' range=':= goldSize * _default_'/>
                     <Setting name='OreDensity' avg=':= 0.3 * _default_'/>
                     <BiomeType name='Forest'/>    
-                    <Veins name='GoldHintVeins' block='minecraft:gold_ore' inherits='PresetHintVeins'>
+                    <Veins name='GoldHintVeins' block='HarderOres:ore_gold:3' inherits='PresetHintVeins'>
                         <DrawWireframe>:=drawWireframes</DrawWireframe>
-                        <WireframeColor>0x40443300</WireframeColor>
+                        <WireframeColor>0x40f0b91d</WireframeColor>
                         <Setting name='MotherlodeFrequency' avg=':= 0.3 * _default_' range=':= _default_'/>
                         <Setting name='MotherlodeRangeLimit' avg=':= 0.75 * goldSize * _default_' range=':= 0.65 * goldSize * _default_'/>                    
                     </Veins>             
@@ -620,14 +620,14 @@
                     <Description> Equivalent to vanilla minecraft redstone distribution </Description>
                     <DrawWireframe>:=drawWireframes</DrawWireframe>
                     <WireframeColor>0x40550000</WireframeColor> 
-                    <Setting name='Size' avg=':= 7/8 * redstoneSize * _default_'/>
+                    <Setting name='hardSize' avg=':= 7/8 * redstoneSize * _default_'/>
                     <Setting name='Frequency' avg=':= 0.4 * redstoneFreq * _default_'/>
                     <Setting name='Height' avg=':= 8/64 * dimension.groundLevel' range=':= 8/64 * dimension.groundLevel'/>
                 </StandardGen>
             </IfCondition>
                 
             <IfCondition condition=':= redstoneDist = "layeredVeins"'>
-                <Veins name='RedstoneVeins' block='minecraft:redstone_ore' inherits='PresetVerticalVeins'> 
+                <Veins name='RedstoneVeins' block='HarderOres:ore_redstone' inherits='PresetVerticalVeins'> 
                     <Description> 
                         Isolated veins (no motherlodes) that run vertically.  These veins are fairly common, but a challenge to mine because you have to tunnel straight down.
                     </Description>  
@@ -646,7 +646,7 @@
             </IfCondition>
                 
             <IfCondition condition=':= redstoneDist = "strategicClouds"'>
-                <Cloud name='RedstoneCloud' block='minecraft:redstone_ore' inherits='PresetStrategicCloud'>
+                <Cloud name='RedstoneCloud' block='HarderOres:ore_redstone' inherits='PresetStrategicCloud'>
                     <Description> 
                         Diffuse redstone cloud surrounded by single-block "hint" veins, found in deserts.
                     </Description> 
@@ -656,7 +656,7 @@
                     <Setting name='CloudRadius' avg=':= 0.65 * redstoneSize * _default_' range=':= 0.5 * redstoneSize * _default_'/>
                     <Setting name='CloudThickness' avg=':= 0.7 * redstoneSize * _default_' range=':= 0.7 * redstoneSize * _default_'/>
                     <BiomeType name='Sandy'/>    
-                    <Veins name='RedstoneHintVeins' block='minecraft:redstone_ore' inherits='PresetHintVeins'>
+                    <Veins name='RedstoneHintVeins' block='HarderOres:ore_redstone' inherits='PresetHintVeins'>
                         <DrawWireframe>:=drawWireframes</DrawWireframe>
                         <WireframeColor>0x40550000</WireframeColor>
                         <Setting name='MotherlodeFrequency' avg=':= 0.7 * _default_' range=':= _default_'/>
@@ -673,18 +673,18 @@
         <ConfigSection> 
             
             <IfCondition condition=':= diamondDist = "vanillaStdGen"'>
-                <StandardGen name='DiamondStandard' block='minecraft:diamond_ore' inherits='PresetStandardGen'> 
+                <StandardGen name='DiamondStandard' block='HarderOres:ore_diamond:9' inherits='PresetStandardGen'> 
                     <Description> Equivalent to vanilla minecraft diamond distribution </Description>
                     <DrawWireframe>:=drawWireframes</DrawWireframe>
                     <WireframeColor>0x40336699</WireframeColor> 
-                    <Setting name='Size' avg=':= 7/8 * diamondSize * _default_'/>
+                    <Setting name='hardSize' avg=':= 7/8 * diamondSize * _default_'/>
                     <Setting name='Frequency' avg=':= 1/20 * diamondFreq * _default_'/>
                     <Setting name='Height' avg=':= 8/64 * dimension.groundLevel' range=':= 8/64 * dimension.groundLevel'/>
                 </StandardGen>
             </IfCondition>
                 
             <IfCondition condition=':= diamondDist = "layeredVeins"'>
-                <Veins name="DiamondVeins" block='minecraft:diamond_ore' inherits='PresetPipeVeins' seed='0xF186'>
+                <Veins name="DiamondVeins" block='HarderOres:ore_diamond:7' inherits='PresetPipeVeins' seed='0xF186'>
                     <Description> Short sparsely filled tubes starting at bedrock. </Description>
                     <DrawWireframe>:=drawWireframes</DrawWireframe>
                     <WireframeColor>0x40336699</WireframeColor> 
@@ -696,18 +696,29 @@
                 </Veins>
                 <Veins name="DiamondVeinsLava" block='minecraft:lava' inherits='DiamondVeins' seed='0xF186'>
                     <Description> Fills center of each tube with lava, forming "kimberlite pipes" </Description>
-                    <Setting name='MotherlodeSize' avg=':= 0.5 * _default_'/>
-                    <Setting name='SegmentRadius' avg=':= 0.5 * _default_'/>
+                    <Setting name='MotherlodeSize' avg=':= 0.3 * _default_'/>
+                    <Setting name='SegmentRadius' avg=':= 0.3 * _default_'/>
                     <Setting name='OreDensity' avg='1' range='0'/>
                     <ReplacesOre block='stone'/>
                     <Replaces block='minecraft:dirt'/>
                     <Replaces block='minecraft:gravel'/>
-                    <Replaces block='minecraft:diamond_ore'/>
+                    <Replaces block='HarderOres:ore_diamond:7'/>
+                </Veins>
+				<Veins name="DiamondVeinsSilverfish" block='minecraft:monster_egg' inherits='DiamondVeins' seed='0xF186'>
+                    <Description> 
+                        Surround the tubes with silverfish spawners. 
+                    </Description>
+                    <Setting name='MotherlodeSize' avg=':= 1.5 * _default_'/>
+                    <Setting name='SegmentRadius' avg=':= 1.5 * diamondSize * _default_'/>
+                    <Setting name='OreDensity' avg='0.4' range='0'/>
+                    <ReplacesOre block='stone'/>
+                    <Replaces block='minecraft:dirt'/>
+                    <Replaces block='minecraft:gravel'/>
                 </Veins>
             </IfCondition>
                 
             <IfCondition condition=':= diamondDist = "strategicClouds"'>
-                <Cloud name='DiamondCloud' block='minecraft:diamond_ore' inherits='PresetStrategicCloud'>
+                <Cloud name='DiamondCloud' block='HarderOres:ore_diamond:7' inherits='PresetStrategicCloud'>
                     <Description>  Diffuse diamond cloud with no internal density noise. </Description> 
                     <DrawWireframe>:=drawWireframes</DrawWireframe>
                     <WireframeColor>0x40336699</WireframeColor> 
@@ -731,7 +742,7 @@
                     <Description> Equivalent to vanilla minecraft lapis lazuli distribution </Description>
                     <DrawWireframe>:=drawWireframes</DrawWireframe>
                     <WireframeColor>0x40000055</WireframeColor> 
-                    <Setting name='Size' avg=':= 6/8 * lapisSize * _default_'/>
+                    <Setting name='hardSize' avg=':= 6/8 * lapisSize * _default_'/>
                     <Setting name='Frequency' avg=':= 0.05 * lapisFreq * _default_'/>
                     <Setting name='Height' avg=':= 16/64 * dimension.groundLevel' range=':= 16/64 * dimension.groundLevel' type='normal'/>
                 </StandardGen>
@@ -789,7 +800,7 @@
                     <Description> Equivalent to vanilla minecraft diamond distribution </Description>
                     <DrawWireframe>:=drawWireframes</DrawWireframe>
                     <WireframeColor>0x40339966</WireframeColor> 
-                    <Setting name='Size' avg=':= 2/8 * emeraldSize * _default_'/>
+                    <Setting name='hardSize' avg=':= 2/8 * emeraldSize * _default_'/>
                     <Setting name='Frequency' avg=':= 6/20 * emeraldFreq * _default_' 
                                               range=':= 2 * emeraldFreq'/>
                     <Setting name='Height' avg=':= 18/64 * dimension.groundLevel' range=':= 14/64 * dimension.groundLevel'/>
