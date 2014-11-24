@@ -33,7 +33,7 @@
         
             <OptionChoice name='hardcoalDist' default='layeredVeins' displayState='shown' displayGroup='groupHarderOres'>
                 <Description> Controls how Coal is generated </Description>
-                <DisplayName>Coal Type</DisplayName>
+                <DisplayName>Hard Coal Type</DisplayName>
                 <Choice value='layeredVeins' displayValue='Veins'>
                     <Description> 
                         Single short, wide veins found near ground level and only sparsely filled with ore.  Most common in swamps.  
@@ -69,7 +69,7 @@
             
             <OptionChoice name='hardironDist' default='layeredVeins' displayState='shown' displayGroup='groupHarderOres'>
                 <Description> Controls how Iron is generated </Description>
-                <DisplayName>Iron Type</DisplayName>
+                <DisplayName>Hard Iron Type</DisplayName>
                 <Choice value='layeredVeins' displayValue='Veins'>
                     <Description> 
                         Groups of long narrow veins found about one third of the way down to bedrock.  Especially common in snowy or icy areas.  
@@ -105,7 +105,7 @@
         
             <OptionChoice name='hardgoldDist' default='layeredVeins' displayState='shown' displayGroup='groupHarderOres'>
                 <Description> Controls how Gold is generated </Description>
-                <DisplayName>Gold Type</DisplayName>
+                <DisplayName>Hard Gold Type</DisplayName>
                 <Choice value='layeredVeins' displayValue='Veins'>
                     <Description> 
                         Groups of long narrow veins found about two thirds of the way down to bedrock.  Most common in temperate hardwood forests, but still very rare.
@@ -141,7 +141,7 @@
         
             <OptionChoice name='hardredstoneDist' default='layeredVeins' displayState='shown' displayGroup='groupHarderOres'>
                 <Description> Controls how Redstone is generated </Description>
-                <DisplayName>Redstone Type</DisplayName>
+                <DisplayName>Hard Redstone Type</DisplayName>
                 <Choice value='layeredVeins' displayValue='Veins'>
                     <Description> 
                         Single vertical veins starting near the surface and extending down about halfway to bedrock.  Most common in desert climates.
@@ -177,7 +177,7 @@
         
             <OptionChoice name='harddiamondDist' default='layeredVeins' displayState='shown' displayGroup='groupHarderOres'>
                 <Description> Controls how Diamonds are generated </Description>
-                <DisplayName>Diamond Type</DisplayName>
+                <DisplayName>Hard Diamond Type</DisplayName>
                 <Choice value='layeredVeins' displayValue='Veins'>
                     <Description> 
                         Short lava-filled tubes extending upward from bedrock with diamonds around the edges. 
@@ -249,7 +249,7 @@
         
             <OptionChoice name='hardemeraldDist' default='layeredVeins' displayState='shown' displayGroup='groupHarderOres'>
                 <Description> Controls how Emeralds are generated </Description>
-                <DisplayName>Emerald Type</DisplayName>
+                <DisplayName>Hard Emerald Type</DisplayName>
                 <Choice value='layeredVeins' displayValue='Veins'>
                     <Description> 
                         Short sloping tubes filled sparsely with emeralds and a few ... surprises.  Vastly more common under open grassy hills.
