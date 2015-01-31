@@ -1,0 +1,287 @@
+<!--********************** CustomOreGen HarderOres Module ******************
+:set ai et ts=4 sw=4
+
+    This file contains Presets, Options, and
+    Distributions for the rocks and minerals defined by HarderOres.
+
+    We leave the COG-generated (standard) ores alone and simply
+    replace the stone with our rock, and then our rock with our
+    minerals. Since we generate coal and many different types of iron
+    ore, the user should probably disable vanilla ore generation, as
+    well as the COG generated coal and iron.
+    
+***************************************************************************-->
+
+<!-- This is taken from the Geologica config file. As Tom Lehr said, "Research" :-) -->
+
+<!-- ATG Adaptations
+  - Rework stone heights
+    Mudstone: 47-74 => 47-89 (current: 47-74)
+    Limestone: 77-89 => 92-130 (current: 77-110)
+    Sandstone: 133-170 (current: 113-150)
+    Quartzite/Gneiss: 173-255 (current: 153-255)
+-->
+
+<IfModInstalled name='HarderOres'>
+  
+  <ConfigSection>
+
+    <OptionChoice name='HarderOresActive'
+                  default=':= dimension.generator = "RandomLevelSource" | dimension.generator = "ATGLevelSource"'
+                  displayGroup='groupInternal'>
+      <Choice value='true' displayValue='On'/>
+      <Choice value='false' displayValue='Off'/>
+      <Comment>
+        Controls whether HarderOres is active in the current
+        dimension. By default, it is active in the overworld and
+        Mystcraft ages. To disable for a specific dimension, set this
+        to false in the CustomOreGen_Options.txt found in the
+        dimension directory (preferably before visiting it).
+      </Comment>
+    </OptionChoice>
+
+    <ConfigSection> <!-- Biome Sets -->
+      <BiomeSet name='shieldVolcano'>
+        <Biome name='Volcano'/> <!-- BOP -->
+        <Biome name='Deadlands'/> <!-- BOP -->
+      </BiomeSet>
+
+      <BiomeSet name='stratovolcano'>
+        <Biome name='Extreme\s*Hills'/>
+        <Biome name='Extreme\s*Hills\s*Edge'/>
+      </BiomeSet>
+
+      <BiomeSet name='caldera'>
+        <Biome name='Hot Springs'/> <!-- BOP -->
+      </BiomeSet>
+
+      <BiomeSet name='felsic'>
+        <BiomeSet inherits='stratovolcano'/>
+        <BiomeSet inherits='caldera'/>
+      </BiomeSet>
+      
+      <BiomeSet name='volcanic'>
+        <BiomeSet inherits='felsic'/>
+        <BiomeSet inherits='shieldVolcano'/>
+      </BiomeSet>
+
+      <BiomeSet name='dome'>
+        <Biome name='glacier'/> <!-- BOP -->
+      </BiomeSet>
+
+      <BiomeSet name='folded'>
+        <Biome name='alps'/> <!-- BOP -->
+        <Biome name='highlands'/> <!-- BOP -->
+        <Biome name='crag'/> <!-- BOP -->
+        <Biome name='ice mountains'/>
+      </BiomeSet>
+
+      <BiomeSet name='island'>
+        <BiomeType name='mushroom'/>
+      </BiomeSet>
+      
+      <BiomeSet name='oceanic'>
+        <BiomeType name='ocean'/>
+        <BiomeSet inherits='island'/>
+      </BiomeSet>
+
+      <BiomeSet name='sedocean'>
+        <BiomeType name='ocean'/>
+        <Biome name='deep ocean' weight='-1'/>
+      </BiomeSet>
+      
+      <BiomeSet name='continental'>
+        <Biome name='.*'/>
+        <BiomeSet inherits='oceanic' weight='-1'/>
+        <BiomeSet inherits='volcanic' weight='-1'/>
+      </BiomeSet>
+
+      <BiomeSet name='inland' inherits='continental'>
+        <BiomeType name='beach' weight='-1'/>
+      </BiomeSet>
+
+      <BiomeSet name='frozen-continental'>
+        <BiomeType name='cold'/>
+        <BiomeType name='ocean' weight='-1'/>
+      </BiomeSet>
+      
+    </ConfigSection>
+    
+    <ConfigSection>
+
+      <CloudPreset name='PresetStratum'>
+        <Description>
+          Solid clouds that form layers of rock and minerals. Individual
+          layer generators are expected to modify the CloudHeight,
+          CouldThickness and DistributionFrequency settings.
+        </Description>
+        <Setting name='DistributionFrequency' avg='1.0'/>
+        <Setting name='CloudRadius' avg='16' range='0' type='normal'/>
+        <Setting name='CloudThickness' range='3' type='normal'/>
+        <Setting name='CloudHeight' range='2' type='uniform'/>
+        <Setting name='OreDensity' avg='1.0'/>
+        <Setting name='OreVolumeNoiseCutoff' avg='0'/>
+        <Replaces block='minecraft:stone'/>
+      </CloudPreset>
+
+    </ConfigSection>
+
+    <ConfigSection> <!-- Mineral sand -->
+
+      <ConfigSection>
+        <CloudPreset name='PresetPlacer' inherits='PresetStratum'>
+    <!-- TODO / DANGER : 62 +/- 1 is 61 to 63; this may make it fail to actually
+                 catch surface blocks (does not replace dirt). *Needs debug testing* -->
+                 <!-- Notes:
+                    1. Radius is not set here; rivers and beaches set it as needed.
+                    2. frequency is once per 25 chunks in beach, once per 12.5 chunks in rivers
+                    3. "Do not replace dirt" - Keep it to the stone/water boundary.
+                        Normal chunk decorations have put grass, gravel, and sand at the
+                        stone/water boundary. If a mod adds to that, then it should be
+                        added here.
+                    4. But in a beach, sand is everywhere. Note that "sea level" is still likely
+                        to only be at the water line, but it now can be found slightly inland.
+                 -->
+          <Setting name='CloudThickness' avg='1' range='0'/>
+          <Setting name='DistributionFrequency' avg='0.04' range='0'/>
+          <Setting name='CloudHeight' avg='62' range='1'
+                   type='uniform' scaleTo='sealevel'/>
+          <Replaces block='minecraft:grass'/>
+          <ReplacesRegexp block='.*sand'/>
+          <!-- <ReplacesRegexp block='.*dirt'/> -->
+          <Replaces block='minecraft:gravel'/>
+        </CloudPreset>
+        <CloudPreset name='PresetBeachPlacer' inherits='PresetPlacer'>
+          <BiomeType name='beach' weight='0.5'/>
+          <Setting name='CloudRadius' avg='5' range='2' type='normal'/>
+        </CloudPreset>
+        <CloudPreset name='PresetAlluvialPlacer' inherits='PresetPlacer'>
+          <BiomeType name='river'/>
+          <Setting name='CloudThickness' avg='1' range='0'/>
+          <Setting name='DistributionFrequency' avg=':= 2 * _default_'
+                   range='0'/>
+          <Setting name='CloudRadius' avg='8' range='2' type='normal'/>
+        </CloudPreset>
+      </ConfigSection>
+    </ConfigSection>
+
+    <ConfigSection> <!-- Laterite, limonite -->
+
+      <ConfigSection>
+
+<!-- PresetRichSoil: 6-10 thick ellipsoid around 45-65. Replaces dirt and stone (only)
+    PresetLaterite: Rich Soil, for hot or wet biomes (45-65)
+    PresetLateriteLimonite: 50% density ore deposit.
+
+    PresetPeat: Rich soil, in swamps, as dirt -- replacing stone with dirt in swamps.
+    PresetBogLimonite: Peat, with 50% limonite (large blobs of dirt around the top of swamps,
+                or possibly just under a thin layer of stone below the top water and dirt.)
+    PresetSerpentiniteUnderLimonite: 4-8 thick ellipsoid, centered 51-55 (51.5 to 54.5),
+                or final distribution Y=48 to Y=57 (bottom portion of the rich soil zone),
+                but *wide* -- stratum layers are radius 16 ...
+    -->
+
+        <CloudPreset name='PresetRichSoil' inherits='PresetStratum'>
+            <!-- Is this correct? This ultimately generates 6 to 10 thick ellipsoids,
+                centered around 50 to 60, in swamps -- so it can be deep (45 to 55,
+                well below the ground), or all over the "surface".
+                I hope Geologica knows what it's doing here ... -->
+                <!-- Actually, "hot" or "wet" can be jungles, or deserts.
+                    Maybe Mesa. Should that scaleto be biome? 
+                    (Biome is bugged for high/low biomes; only good for near-sea base terrain)
+          <Setting name='DistributionFrequency' avg='0.01'/>
+          <Setting name='CloudThickness' avg='4' range='1'/>
+          <Setting name='CloudHeight'
+                   avg=':= 55/64 * dimension.groundLevel'
+                   range='5'/>
+          <Replaces block='minecraft:stone'/>
+          <Replaces block='minecraft:dirt'/>
+        </CloudPreset>
+
+        <CloudPreset name='PresetLaterite'
+                     inherits='PresetRichSoil'
+                     drawWireframe='false'>
+          <WireframeColor>0xFFFF1100</WireframeColor>
+          <Biome name='.*' weight='-1'/>
+          <BiomeType name='hot'/>
+          <BiomeType name='wet'/>
+        </CloudPreset>
+
+        <CloudPreset name='PresetLateriteLimonite'
+                     inherits='PresetLaterite'>
+          <WireframeColor>0xFF1111FF</WireframeColor>
+          <Setting name='DistributionFrequency' avg='0.01'/>
+          <OreBlock block='harderores:ore_limonite' weight='0.5'/>
+        </CloudPreset>
+
+        <!-- FIXME: do we want to add peat? (instead of dirt)
+             Peat would be generated in:
+             - any swamp
+             - fen and moor from BOP, which *should* be swamps => FIXME!
+        -->
+        <!-- NOTE: we are not actually generating this 'peat'
+             distribution, just the bog limonite derivative! -->
+        <CloudPreset name='PresetPeat' block='minecraft:dirt'
+                     inherits='PresetRichSoil'
+                     drawWireframe='false'>
+          <WireframeColor>0xFFFF1100</WireframeColor>
+          <Setting name='DistributionFrequency' avg=':= 0.5 * _default_'/>
+          <BiomeType name='swamp'/>
+        </CloudPreset>
+        
+        <CloudPreset name='PresetBogLimonite' inherits='PresetPeat'>
+          <WireframeColor>0xFF1111FF</WireframeColor>
+          <OreBlock block='harderores:ore_limonite' weight='0.5'/>
+        </CloudPreset>
+
+        <CloudPreset name='PresetSerpentiniteUnderLimonite'
+                     inherits='PresetStratum'
+                     drawWireframe='false'
+                     wireframeColor='0xFF00AA00'>
+          <Setting name='DistributionFrequency' avg='2.5'/>
+          <Setting name='CloudHeight' avg='53' range='2'/>
+          <Setting name='CloudThickness' avg='3' range='1'/>
+          <Setting name='ParentRangeLimit' avg='5' range='2'/>
+          <Replaces block='minecraft:stone'/>
+          <OreBlock block='harderores:ore_limonite' weight='0.5'/>
+        </CloudPreset>
+        
+      </ConfigSection>
+
+      <ConfigSection>
+        <IfCondition condition=":= ?HarderOresActive">
+                <!-- Actually place stuff:
+                    1. LateriteLimonite: 50% hot or wet, large dirt and limonite blobs
+                    2. SerpentiniteUnderLimonite: Additional dirt/limonite blobs, same area
+                    3. BogLimonite: Even more in swamps (again, 50% density).
+                    4. LimoniteSandAlluvial: Grass, sand, and gravel at sea level in rivers.
+                    5. LimoniteSandBeach: Grass, sand, and gravel at sea level in beaches!!
+                        Not "just along the water edge".
+                    
+                    The basic idea is "In hot or wet (jungle or swamp), densely near bottom,
+                        sparsely higher up, and even more in the swamps.
+
+                        That it may also give you "dried out limonite" in deserts or mesas ...
+                -->
+
+            <Cloud name='LateriteLimonite' inherits='PresetLateriteLimonite'>
+              <Cloud name='SerpentiniteUnderLimonite'
+                     inherits='PresetSerpentiniteUnderLimonite'/>
+            </Cloud>
+            <Cloud name='BogLimonite' inherits='PresetBogLimonite'/>
+
+	    <Cloud name='LimoniteSandAlluvial'
+			       inherits='PresetAlluvialPlacer'
+			       block='harderores:ore_limonite'>
+	    </CloudPreset>
+	    <Cloud name='LimoniteSandBeach'
+			       inherits='PresetBeachPlacer'
+			       block='harderores:ore_limonite'>
+	    </CloudPreset>
+
+        </IfCondition>
+      </ConfigSection>
+      
+    </ConfigSection>
+
+</IfModInstalled>
