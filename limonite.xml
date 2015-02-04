@@ -211,7 +211,7 @@
                      inherits='PresetLaterite'>
           <WireframeColor>0xFF1111FF</WireframeColor>
           <Setting name='DistributionFrequency' avg='0.01'/>
-          <OreBlock block='harderores:ore_limonite' weight='0.5'/>
+          <OreBlock block='harderores:ore_limonite' weight='0.3'/>
         </CloudPreset>
 
         <!-- FIXME: do we want to add peat? (instead of dirt)
@@ -231,7 +231,7 @@
         
         <CloudPreset name='PresetBogLimonite' inherits='PresetPeat'>
           <WireframeColor>0xFF1111FF</WireframeColor>
-          <OreBlock block='harderores:ore_limonite' weight='0.5'/>
+          <OreBlock block='harderores:ore_limonite' weight='0.3'/>
         </CloudPreset>
 
         <CloudPreset name='PresetSerpentiniteUnderLimonite'
@@ -243,9 +243,9 @@
           <Setting name='CloudThickness' avg='3' range='1'/>
           <Setting name='ParentRangeLimit' avg='5' range='2'/>
           <Replaces block='minecraft:stone'/>
-          <OreBlock block='harderores:ore_limonite' weight='0.5'/>
+          <OreBlock block='harderores:ore_limonite' weight='0.3'/>
         </CloudPreset>
-        
+
       </ConfigSection>
 
       <ConfigSection>
@@ -270,18 +270,22 @@
             </Cloud>
             <Cloud name='BogLimonite' inherits='PresetBogLimonite'/>
 
-	    <Cloud name='LimoniteSandAlluvial'
-			       inherits='PresetAlluvialPlacer'
-			       block='harderores:ore_limonite'>
-	    </CloudPreset>
-	    <Cloud name='LimoniteSandBeach'
-			       inherits='PresetBeachPlacer'
-			       block='harderores:ore_limonite'>
-	    </CloudPreset>
+        <!-- Geologica has two iron beach placements (basaltic and granitic) and
+            one rivier (granitic). Here, we use a double frequency beach -->
+            <Cloud name='LimoniteSandAlluvial'
+                        inherits='PresetAlluvialPlacer'
+                        block='harderores:ore_limonite'>
+            </CloudPreset>
+            <Cloud name='LimoniteSandBeach'
+                        inherits='PresetBeachPlacer'
+                        block='harderores:ore_limonite'>
+                <Setting name='DistributionFrequency' avg=':= 2 * _default_'
+                    range='0'/>
+            </CloudPreset>
 
         </IfCondition>
-      </ConfigSection>
-      
+        </ConfigSection>
+
     </ConfigSection>
 
 </IfModInstalled>
