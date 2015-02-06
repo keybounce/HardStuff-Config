@@ -1,5 +1,5 @@
 <!--********************** CustomOreGen HarderOres Module ******************
-:set ai et ts=4 sw=4
+:set ai et ts=2 sw=2
 
     This file contains Presets, Options, and
     Distributions for the rocks and minerals defined by HarderOres.
@@ -39,6 +39,7 @@
         dimension directory (preferably before visiting it).
       </Comment>
     </OptionChoice>
+  </ConfigSection>
 
     <ConfigSection> <!-- Biome Sets -->
       <BiomeSet name='shieldVolcano'>
@@ -109,7 +110,7 @@
     
     <ConfigSection>
 
-      <CloudPreset name='PresetStratum'>
+      <CloudPreset name='Harder-PresetStratum'>
         <Description>
           Solid clouds that form layers of rock and minerals. Individual
           layer generators are expected to modify the CloudHeight,
@@ -129,7 +130,7 @@
     <ConfigSection> <!-- Mineral sand -->
 
       <ConfigSection>
-        <CloudPreset name='PresetPlacer' inherits='PresetStratum'>
+        <CloudPreset name='Harder-PresetPlacer' inherits='Harder-PresetStratum'>
     <!-- TODO / DANGER : 62 +/- 1 is 61 to 63; this may make it fail to actually
                  catch surface blocks (does not replace dirt). *Needs debug testing* -->
                  <!-- Notes:
@@ -144,23 +145,34 @@
                  -->
           <Setting name='CloudThickness' avg='1' range='0'/>
           <Setting name='DistributionFrequency' avg='0.04' range='0'/>
-          <Setting name='CloudHeight' avg='62' range='1'
-                   type='uniform' scaleTo='sealevel'/>
+          <Setting name='CloudHeight' avg='62' range='1' type='uniform' scaleTo='sealevel'/>
           <Replaces block='minecraft:grass'/>
           <ReplacesRegexp block='.*sand'/>
           <!-- <ReplacesRegexp block='.*dirt'/> -->
           <Replaces block='minecraft:gravel'/>
+          <Replaces block='minecraft:clay'/>
+          <Cloud >
+            <Setting name='CloudThickness' avg='1.5' range='0.5'/>
+            <Setting name='DistributionFrequency' avg='5.0' range='2'/>
+            <Setting name='ParentRangeLimit' avg='20.0' range='6.0' />
+            <Setting name='CloudHeight' avg='59.5' range='2' type='uniform' scaleTo='sealevel'/>
+            <Replaces block='minecraft:grass'/>
+            <ReplacesRegexp block='.*sand'/>
+            <ReplacesRegexp block='.*dirt'/> 
+            <Replaces block='minecraft:gravel'/>
+            <Replaces block='minecraft:clay'/>
+          </Cloud>  
         </CloudPreset>
-        <CloudPreset name='PresetBeachPlacer' inherits='PresetPlacer'>
+        <CloudPreset name='Harder-PresetBeachPlacer' inherits='Harder-PresetPlacer'>
           <BiomeType name='beach' weight='0.5'/>
-          <Setting name='CloudRadius' avg='5' range='2' type='normal'/>
+          <Setting name='CloudRadius' avg='3' range='1.5' type='normal'/>
         </CloudPreset>
-        <CloudPreset name='PresetAlluvialPlacer' inherits='PresetPlacer'>
+        <CloudPreset name='Harder-PresetAlluvialPlacer' inherits='Harder-PresetPlacer'>
           <BiomeType name='river'/>
           <Setting name='CloudThickness' avg='1' range='0'/>
           <Setting name='DistributionFrequency' avg=':= 2 * _default_'
                    range='0'/>
-          <Setting name='CloudRadius' avg='8' range='2' type='normal'/>
+          <Setting name='CloudRadius' avg='2.5' range='1.5' type='normal'/>
         </CloudPreset>
       </ConfigSection>
     </ConfigSection>
@@ -170,20 +182,20 @@
       <ConfigSection>
 
 <!-- PresetRichSoil: 6-10 thick ellipsoid around 45-65. Replaces dirt and stone (only)
-    PresetLaterite: Rich Soil, for hot or wet biomes (45-65)
+    PresetLaterite: Rich Soil, for hot and wet biomes (45-65)
     PresetLateriteLimonite: 50% density ore deposit.
 
-    PresetPeat: Rich soil, in swamps, as dirt -- replacing stone with dirt in swamps.
+    PresetPeat: Rich soil, in swamps, as dirt - replacing stone with dirt in swamps.
     PresetBogLimonite: Peat, with 50% limonite (large blobs of dirt around the top of swamps,
                 or possibly just under a thin layer of stone below the top water and dirt.)
     PresetSerpentiniteUnderLimonite: 4-8 thick ellipsoid, centered 51-55 (51.5 to 54.5),
                 or final distribution Y=48 to Y=57 (bottom portion of the rich soil zone),
-                but *wide* -- stratum layers are radius 16 ...
+                but *wide* - stratum layers are radius 16 ...
     -->
 
-        <CloudPreset name='PresetRichSoil' inherits='PresetStratum'>
+        <CloudPreset name='Harder-PresetRichSoil' inherits='Harder-PresetStratum'>
             <!-- Is this correct? This ultimately generates 6 to 10 thick ellipsoids,
-                centered around 50 to 60, in swamps -- so it can be deep (45 to 55,
+                centered around 50 to 60, in swamps - so it can be deep (45 to 55,
                 well below the ground), or all over the "surface".
                 I hope Geologica knows what it's doing here ... -->
                 <!-- Actually, "hot" or "wet" can be jungles, or deserts.
@@ -198,8 +210,8 @@
           <Replaces block='minecraft:dirt'/>
         </CloudPreset>
 
-        <CloudPreset name='PresetLaterite'
-                     inherits='PresetRichSoil'
+        <CloudPreset name='Harder-PresetLaterite'
+                     inherits='Harder-PresetRichSoil'
                      drawWireframe='false'>
           <WireframeColor>0xFFFF1100</WireframeColor>
           <Biome name='.*' weight='-1'/>
@@ -207,8 +219,8 @@
           <BiomeType name='wet'/>
         </CloudPreset>
 
-        <CloudPreset name='PresetLateriteLimonite'
-                     inherits='PresetLaterite'>
+        <CloudPreset name='Harder-PresetLateriteLimonite'
+                     inherits='Harder-PresetLaterite'>
           <WireframeColor>0xFF1111FF</WireframeColor>
           <Setting name='DistributionFrequency' avg='0.01'/>
           <OreBlock block='harderores:ore_limonite' weight='0.3'/>
@@ -221,15 +233,15 @@
         -->
         <!-- NOTE: we are not actually generating this 'peat'
              distribution, just the bog limonite derivative! -->
-        <CloudPreset name='PresetPeat' block='minecraft:dirt'
-                     inherits='PresetRichSoil'
+        <CloudPreset name='Harder-PresetPeat' 
+                     inherits='Harder-PresetRichSoil'
                      drawWireframe='false'>
           <WireframeColor>0xFFFF1100</WireframeColor>
           <Setting name='DistributionFrequency' avg=':= 0.5 * _default_'/>
           <BiomeType name='swamp'/>
         </CloudPreset>
         
-        <CloudPreset name='PresetBogLimonite' inherits='PresetPeat'>
+        <CloudPreset name='Harder-PresetBogLimonite' inherits='Harder-PresetPeat'>
           <WireframeColor>0xFF1111FF</WireframeColor>
           <OreBlock block='harderores:ore_limonite' weight='0.3'/>
         </CloudPreset>
@@ -264,27 +276,26 @@
                         That it may also give you "dried out limonite" in deserts or mesas ...
                 -->
 
-            <Cloud name='LateriteLimonite' inherits='PresetLateriteLimonite'>
-              <Cloud name='SerpentiniteUnderLimonite'
-                     inherits='PresetSerpentiniteUnderLimonite'/>
-            </Cloud>
-            <Cloud name='BogLimonite' inherits='PresetBogLimonite'/>
+            <Cloud name='Harder-LateriteLimonite' inherits='Harder-PresetLateriteLimonite'/>
+            <Cloud name='Harder-BogLimonite' inherits='Harder-PresetBogLimonite'/>
 
         <!-- Geologica has two iron beach placements (basaltic and granitic) and
             one rivier (granitic). Here, we use a double frequency beach -->
-            <Cloud name='LimoniteSandAlluvial'
-                        inherits='PresetAlluvialPlacer'
-                        block='harderores:ore_limonite'>
-            </CloudPreset>
-            <Cloud name='LimoniteSandBeach'
-                        inherits='PresetBeachPlacer'
-                        block='harderores:ore_limonite'>
+            <Cloud name='Harder-LimoniteSandAlluvial'
+                        inherits='Harder-PresetAlluvialPlacer' >
+                <OreBlock block='HarderOres:ore_limonite' weight='0.5' />
+                <OreBlock block='minecraft:clay' weight='0.5' />
+            </Cloud>
+            <Cloud name='Harder-LimoniteSandBeach'
+                        inherits='Harder-PresetBeachPlacer' >
                 <Setting name='DistributionFrequency' avg=':= 2 * _default_'
                     range='0'/>
-            </CloudPreset>
+                <OreBlock block='HarderOres:ore_limonite' weight='0.5' />
+                <OreBlock block='minecraft:clay' weight='0.5' />
+            </Cloud>
 
         </IfCondition>
-        </ConfigSection>
+      </ConfigSection>
 
     </ConfigSection>
 
