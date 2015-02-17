@@ -158,10 +158,10 @@
             <Setting name='CloudHeight' avg='59.5' range='2' type='uniform' scaleTo='sealevel'/>
             <Replaces block='minecraft:grass'/>
             <ReplacesRegexp block='.*sand'/>
-            <ReplacesRegexp block='.*dirt'/> 
+            <ReplacesRegexp block='.*dirt'/>
             <Replaces block='minecraft:gravel'/>
             <Replaces block='minecraft:clay'/>
-          </Cloud>  
+          </Cloud>
         </CloudPreset>
         <CloudPreset name='Harder-PresetBeachPlacer' inherits='Harder-PresetPlacer'>
           <BiomeType name='beach' weight='0.5'/>
@@ -195,24 +195,35 @@
 
         <CloudPreset name='Harder-PresetRichSoil' inherits='Harder-PresetStratum'>
             <!-- Is this correct? This ultimately generates 6 to 10 thick ellipsoids,
-                centered around 50 to 60, in swamps - so it can be deep (45 to 55,
+                centered around 50 to 60 - so it can be deep (45 to 55,
                 well below the ground), or all over the "surface".
                 I hope Geologica knows what it's doing here ... -->
-                <!-- Actually, "hot" or "wet" can be jungles, or deserts.
-                    Maybe Mesa. Should that scaleto be biome? 
-                    (Biome is bugged for high/low biomes; only good for near-sea base terrain)
+                <!-- Should that scaleto be biome? (Biome is bugged for high/low
+                      biomes; only good for near-sea base terrain) -->
+                <!-- This is used for both bogs (which want a base of sea level),
+                      and "hot + wet" (jungles/etc) (which want a base of ground level) -->
           <Setting name='DistributionFrequency' avg='0.01'/>
           <Setting name='CloudThickness' avg='4' range='1'/>
           <Setting name='CloudHeight'
-                   avg=':= 55/64 * dimension.groundLevel'
-                   range='5'/>
+                   avg=':= 55 /64 * dimension.groundLevel' <!-- FIXME? ScaleTo Biome -->
+                   range='5' type='normal'/>
+                            <!-- WARNING: ScaleTo Biome would affect bog limonite, see below -->
+                            <!-- NOTE: Peat (bog limonite) has a set of "Replaces", this affects
+                                hot and wet (jungle) Laterite deposits in the subsurface stone -->
           <Replaces block='minecraft:stone'/>
           <Replaces block='minecraft:dirt'/>
+          <Replaces block='minecraft:clay'/>
+          <Replaces block='minecraft:gravel'/>
+                  <!-- FIXME: Add sand? -->
         </CloudPreset>
 
         <CloudPreset name='Harder-PresetLaterite'
                      inherits='Harder-PresetRichSoil'
                      drawWireframe='false'>
+            <!-- This is the "Laterite" version - hot and wet, not swamp.
+                This is jungles (only, in vanilla), for example. -->
+                <!-- FIXME: This can safely be scaleTo Biome, and
+                        target the rocky zone below the surface -->
           <WireframeColor>0xFFFF1100</WireframeColor>
           <Biome name='.*' weight='-1'/>
           <BiomeType name='hot'/>
@@ -223,7 +234,11 @@
                      inherits='Harder-PresetLaterite'>
           <WireframeColor>0xFF1111FF</WireframeColor>
           <Setting name='DistributionFrequency' avg='0.01'/>
-          <OreBlock block='harderores:ore_limonite' weight='0.3'/>
+          <OreBlock block='HarderOres:ore_limonite' weight='0.3'/>
+          <OreBlock block='Minecraft:clay' weight='0.4'/>
+            <!-- Should this include dirt and gravel? It's primarily replacing stone
+                with shovel blocks. -->
+            <!-- CHANGE: note that the base Harder-PresetRichSoil now targets dirt and gravel -->
         </CloudPreset>
 
         <!-- FIXME: do we want to add peat? (instead of dirt)
@@ -233,29 +248,31 @@
         -->
         <!-- NOTE: we are not actually generating this 'peat'
              distribution, just the bog limonite derivative! -->
-        <CloudPreset name='Harder-PresetPeat' 
+            <!-- ** CHANGE: From 55 +/- 5 now 58.5 +/- 4, normal -- so 57-59 as the center.
+                With thickness 4, that's 61 to 63 as the "Exposed" point.
+                Plus the variation in thickness, plus the tilt -- it should be more visible.
+                Too visible??? -->
+        <CloudPreset name='Harder-PresetPeat'
                      inherits='Harder-PresetRichSoil'
                      drawWireframe='false'>
           <WireframeColor>0xFFFF1100</WireframeColor>
-          <Setting name='DistributionFrequency' avg=':= 0.5 * _default_'/>
+                        <!-- WARNING! If Rich Soil is made scaleTo Biome, then this is off.
+                          This should be changed to scale to sea level. -->
+          <Setting name='CloudHeight' avg=':= _default_ * 58.5 / 55' <!-- Raise it up -->
+                                      range='4'
+          <Setting name='DistributionFrequency' avg=':= 2.0 * _default_'/>
           <BiomeType name='swamp'/>
+          <!-- NB: Only replace dirt, sand, clay, gravel - the "surface shovel" stuff -->
+          <Replaces block='minecraft:sand'/>
+          <Replaces block='minecraft:dirt'/>
+          <Replaces block='minecraft:clay'/>
+          <Replaces block='minecraft:gravel'/>
         </CloudPreset>
         
         <CloudPreset name='Harder-PresetBogLimonite' inherits='Harder-PresetPeat'>
           <WireframeColor>0xFF1111FF</WireframeColor>
-          <OreBlock block='harderores:ore_limonite' weight='0.3'/>
-        </CloudPreset>
-
-        <CloudPreset name='PresetSerpentiniteUnderLimonite'
-                     inherits='PresetStratum'
-                     drawWireframe='false'
-                     wireframeColor='0xFF00AA00'>
-          <Setting name='DistributionFrequency' avg='2.5'/>
-          <Setting name='CloudHeight' avg='53' range='2'/>
-          <Setting name='CloudThickness' avg='3' range='1'/>
-          <Setting name='ParentRangeLimit' avg='5' range='2'/>
-          <Replaces block='minecraft:stone'/>
-          <OreBlock block='harderores:ore_limonite' weight='0.3'/>
+          <OreBlock block='HarderOres:ore_limonite' weight='0.3'/>
+          <OreBlock block='Minecraft:clay' weight='0.4'/>
         </CloudPreset>
 
       </ConfigSection>
@@ -263,17 +280,11 @@
       <ConfigSection>
         <IfCondition condition=":= ?HarderOresActive">
                 <!-- Actually place stuff:
-                    1. LateriteLimonite: 50% hot or wet, large dirt and limonite blobs
-                    2. SerpentiniteUnderLimonite: Additional dirt/limonite blobs, same area
-                    3. BogLimonite: Even more in swamps (again, 50% density).
+                    1. LateriteLimonite: 30% hot and wet, large dirt and limonite blobs
+                    3. BogLimonite: Even more in swamps (again, 30% density).
                     4. LimoniteSandAlluvial: Grass, sand, and gravel at sea level in rivers.
                     5. LimoniteSandBeach: Grass, sand, and gravel at sea level in beaches!!
                         Not "just along the water edge".
-                    
-                    The basic idea is "In hot or wet (jungle or swamp), densely near bottom,
-                        sparsely higher up, and even more in the swamps.
-
-                        That it may also give you "dried out limonite" in deserts or mesas ...
                 -->
 
             <Cloud name='Harder-LateriteLimonite' inherits='Harder-PresetLateriteLimonite'/>
