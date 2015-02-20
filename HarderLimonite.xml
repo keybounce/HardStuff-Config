@@ -205,8 +205,8 @@
           <Setting name='DistributionFrequency' avg='0.01'/>
           <Setting name='CloudThickness' avg='4' range='1'/>
           <Setting name='CloudHeight'
-                   avg=':= 55 /64 * dimension.groundLevel' <!-- FIXME? ScaleTo Biome -->
-                   range='5' type='normal'/>
+                   avg=':= 55 /64 * dimension.groundLevel' 
+                   range='5' type='normal'/>    <!-- FIXME? ScaleTo Biome -->
                             <!-- WARNING: ScaleTo Biome would affect bog limonite, see below -->
                             <!-- NOTE: Peat (bog limonite) has a set of "Replaces", this affects
                                 hot and wet (jungle) Laterite deposits in the subsurface stone -->
@@ -248,9 +248,9 @@
         -->
         <!-- NOTE: we are not actually generating this 'peat'
              distribution, just the bog limonite derivative! -->
-            <!-- ** CHANGE: From 55 +/- 5 now 58.5 +/- 4, normal -- so 57-59 as the center.
+            <!-- ** CHANGE: From 55 +/- 5 now 58.5 +/- 4, normal - so 57-59 as the center.
                 With thickness 4, that's 61 to 63 as the "Exposed" point.
-                Plus the variation in thickness, plus the tilt -- it should be more visible.
+                Plus the variation in thickness, plus the tilt - it should be more visible.
                 Too visible??? -->
         <CloudPreset name='Harder-PresetPeat'
                      inherits='Harder-PresetRichSoil'
@@ -258,8 +258,8 @@
           <WireframeColor>0xFFFF1100</WireframeColor>
                         <!-- WARNING! If Rich Soil is made scaleTo Biome, then this is off.
                           This should be changed to scale to sea level. -->
-          <Setting name='CloudHeight' avg=':= _default_ * 58.5 / 55' <!-- Raise it up -->
-                                      range='4'
+          <Setting name='CloudHeight' avg=':= _default_ * 58.5 / 55' 
+                                      range='4' />  <!-- Raise it up -->
           <Setting name='DistributionFrequency' avg=':= 2.0 * _default_'/>
           <BiomeType name='swamp'/>
           <!-- NB: Only replace dirt, sand, clay, gravel - the "surface shovel" stuff -->
