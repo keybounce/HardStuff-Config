@@ -151,7 +151,8 @@
           <!-- <ReplacesRegexp block='.*dirt'/> -->
           <Replaces block='minecraft:gravel'/>
           <Replaces block='minecraft:clay'/>
-          <Cloud >
+        </CloudPreset>
+          <CloudPreset name='Harder-PresetPlacer-Child' inherits='Harder-PresetPlacer' >
             <Setting name='CloudThickness' avg='1.5' range='0.5'/>
             <Setting name='DistributionFrequency' avg='5.0' range='2'/>
             <Setting name='ParentRangeLimit' avg='20.0' range='6.0' />
@@ -161,13 +162,23 @@
             <ReplacesRegexp block='.*dirt'/>
             <Replaces block='minecraft:gravel'/>
             <Replaces block='minecraft:clay'/>
-          </Cloud>
-        </CloudPreset>
+          </CloudPreset>
         <CloudPreset name='Harder-PresetBeachPlacer' inherits='Harder-PresetPlacer'>
           <BiomeType name='beach' weight='0.5'/>
           <Setting name='CloudRadius' avg='3' range='1.5' type='normal'/>
         </CloudPreset>
+        <CloudPreset name='Harder-PresetBeachPlacer-Child' inherits='Harder-PresetPlacer-Child'>
+          <BiomeType name='beach' weight='0.5'/>
+          <Setting name='CloudRadius' avg='3' range='1.5' type='normal'/>
+        </CloudPreset>
         <CloudPreset name='Harder-PresetAlluvialPlacer' inherits='Harder-PresetPlacer'>
+          <BiomeType name='river'/>
+          <Setting name='CloudThickness' avg='1' range='0'/>
+          <Setting name='DistributionFrequency' avg=':= 2 * _default_'
+                   range='0'/>
+          <Setting name='CloudRadius' avg='2.5' range='1.5' type='normal'/>
+        </CloudPreset>
+        <CloudPreset name='Harder-PresetAlluvialPlacer-Child' inherits='Harder-PresetPlacer-Child'>
           <BiomeType name='river'/>
           <Setting name='CloudThickness' avg='1' range='0'/>
           <Setting name='DistributionFrequency' avg=':= 2 * _default_'
@@ -296,6 +307,11 @@
                         inherits='Harder-PresetAlluvialPlacer' >
                 <OreBlock block='HarderOres:ore_limonite' weight='0.5' />
                 <OreBlock block='minecraft:clay' weight='0.5' />
+                <Cloud name='Harder-LimoniteSandAlluvial-Child' 
+                        inherits='Harder-PresetAlluvialPlacer-Child' >
+                    <OreBlock block='HarderOres:ore_limonite' weight='0.5' />
+                    <OreBlock block='minecraft:clay' weight='0.5' />
+                </Cloud>
             </Cloud>
             <Cloud name='Harder-LimoniteSandBeach'
                         inherits='Harder-PresetBeachPlacer' >
@@ -303,6 +319,13 @@
                     range='0'/>
                 <OreBlock block='HarderOres:ore_limonite' weight='0.5' />
                 <OreBlock block='minecraft:clay' weight='0.5' />
+                <Cloud name='Harder-LimoniteSandBeach-Child' 
+                        inherits='Harder-PresetBeachPlacer-Child' >
+                    <Setting name='DistributionFrequency' avg=':= 2 * _default_'
+                        range='0'/>
+                    <OreBlock block='HarderOres:ore_limonite' weight='0.5' />
+                    <OreBlock block='minecraft:clay' weight='0.5' />
+                </Cloud>
             </Cloud>
 
         </IfCondition>
