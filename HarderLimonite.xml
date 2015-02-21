@@ -143,9 +143,9 @@
                     4. But in a beach, sand is everywhere. Note that "sea level" is still likely
                         to only be at the water line, but it now can be found slightly inland.
                  -->
-          <Setting name='CloudThickness' avg='1' range='0'/>
+          <Setting name='CloudThickness' avg='0.499' range='0'/>
           <Setting name='DistributionFrequency' avg='0.04' range='0'/>
-          <Setting name='CloudHeight' avg='62' range='1' type='uniform' scaleTo='sealevel'/>
+          <Setting name='CloudHeight' avg='62.5' range='0' type='uniform' scaleTo='sealevel'/>
           <Replaces block='minecraft:grass'/>
           <ReplacesRegexp block='.*sand'/>
           <!-- <ReplacesRegexp block='.*dirt'/> -->
@@ -153,10 +153,10 @@
           <Replaces block='minecraft:clay'/>
         </CloudPreset>
           <CloudPreset name='Harder-PresetPlacer-Child' inherits='Harder-PresetPlacer' >
-            <Setting name='CloudThickness' avg='1.5' range='0.5'/>
+            <Setting name='CloudThickness' avg='1.75' range='0.5'/>
             <Setting name='DistributionFrequency' avg='5.0' range='2'/>
             <Setting name='ParentRangeLimit' avg='20.0' range='6.0' />
-            <Setting name='CloudHeight' avg='59.5' range='2' type='uniform' scaleTo='sealevel'/>
+            <Setting name='CloudHeight' avg='59.75' range='2' type='uniform' scaleTo='sealevel'/>
             <Replaces block='minecraft:grass'/>
             <ReplacesRegexp block='.*sand'/>
             <ReplacesRegexp block='.*dirt'/>
@@ -269,8 +269,8 @@
           <WireframeColor>0xFFFF1100</WireframeColor>
                         <!-- WARNING! If Rich Soil is made scaleTo Biome, then this is off.
                           This should be changed to scale to sea level. -->
-          <Setting name='CloudHeight' avg=':= _default_ * 58.5 / 55' 
-                                      range='4' />  <!-- Raise it up -->
+          <Setting name='CloudHeight' avg=':= _default_ * 58.0 / 55' 
+                                      range='3' />  <!-- Raise it up -->
           <Setting name='DistributionFrequency' avg=':= 2.0 * _default_'/>
           <BiomeType name='swamp'/>
           <!-- NB: Only replace dirt, sand, clay, gravel - the "surface shovel" stuff -->
@@ -282,8 +282,8 @@
         
         <CloudPreset name='Harder-PresetBogLimonite' inherits='Harder-PresetPeat'>
           <WireframeColor>0xFF1111FF</WireframeColor>
+          <OreBlock block='minecraft:clay' weight='0.4'/>
           <OreBlock block='HarderOres:ore_limonite' weight='0.3'/>
-          <OreBlock block='Minecraft:clay' weight='0.4'/>
         </CloudPreset>
 
       </ConfigSection>
