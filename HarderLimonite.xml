@@ -269,8 +269,12 @@
           <WireframeColor>0xFFFF1100</WireframeColor>
                         <!-- WARNING! If Rich Soil is made scaleTo Biome, then this is off.
                           This should be changed to scale to sea level. -->
-          <Setting name='CloudHeight' avg=':= _default_ * 58.0 / 55' 
-                                      range='3' />  <!-- Raise it up -->
+          <Setting name='CloudHeight' avg=':= _default_ * 57.5 / 55' 
+                                      range='3.5' />  <!-- Raise it up -->
+                                              <!-- Now raised up a little less, and can go lower -->
+                                              <!-- To hit the bottom of the swamp, it needs to
+                                                   hit Y=54.  At 58/3, it was breaking out of the
+                                                   water and missing the bottom of the swamps. -->
           <Setting name='DistributionFrequency' avg=':= 2.0 * _default_'/>
           <BiomeType name='swamp'/>
           <!-- NB: Only replace dirt, sand, clay, gravel - the "surface shovel" stuff -->
