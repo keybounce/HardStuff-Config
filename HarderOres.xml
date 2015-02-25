@@ -431,8 +431,8 @@
                     <Setting name='MotherlodeSize' avg=':= hardironSize * _default_' range=':= hardironSize * _default_'/>
                     <Setting name='MotherlodeHeight' avg=':= 45/64 * dimension.groundLevel' range=':= 10/64 * dimension.groundLevel' type='normal'/>
                     <Setting name='BranchHeightLimit' avg='30'/>
-					<Setting name='BranchInclination' avg='0.25' range='0.4' />
-					<Setting name='SegmentAngle' avg='0' range='0.2' />
+                    <Setting name='BranchInclination' avg='0.25' range='0.4' />
+                    <Setting name='SegmentAngle' avg='0' range='0.2' />
                     <Setting name='SegmentRadius' avg=':= hardironSize * _default_' range=':= hardironSize * _default_'/>
                     <ReplacesOre block='stone'/>
                     <Replaces block='minecraft:gravel'/>
@@ -596,8 +596,8 @@
                     <Setting name='MotherlodeHeight' avg=':= 20/64 * dimension.groundLevel' range=':= 10/64 * dimension.groundLevel' type='normal'/>
                     <!-- <Setting name='MotherlodeHeight' avg='43'
                              range='10.5' type='normal' scaleTo='sealevel'/> -->
-					<Setting name='BranchInclination' avg='0.15' range='0.3' />
-					<Setting name='SegmentAngle' avg='0' range='0.15' />
+                    <Setting name='BranchInclination' avg='0.15' range='0.3' />
+                    <Setting name='SegmentAngle' avg='0' range='0.15' />
                     <Setting name='BranchHeightLimit' avg='20'/>
                     <Setting name='SegmentRadius' avg=':= hardgoldSize * _default_' range=':= hardgoldSize * _default_'/>
                     <ReplacesOre block='stone'/>
@@ -808,7 +808,7 @@
                     <Replaces block='minecraft:gravel'/>
                     <Replaces block='HarderOres:ore_diamond:7'/>
                 </Veins>
-				<Veins name="DiamondVeinsSilverfish" block='minecraft:monster_egg' inherits='DiamondVeins' seed='0xF186'>
+                <Veins name="DiamondVeinsSilverfish" block='minecraft:monster_egg' inherits='DiamondVeins' seed='0xF186'>
                     <Description>
                         Surround the tubes with silverfish spawners.
                     </Description>

@@ -27,7 +27,7 @@
     <ConfigSection>
     
         <OptionDisplayGroup name='groupHazards' displayName='Hazards' displayState='shown'>
-            <Description> 
+            <Description>
                 Distribution options for various underground hazards
             </Description>
         </OptionDisplayGroup>
@@ -39,17 +39,17 @@
                 <Description>Controls how Volatile Gas is generated </Description>
                 <DisplayName>Gas Type</DisplayName>
                 <Choice value='layeredVeins' displayValue='Veins'>
-                    <Description> 
-                        Single short, wide veins found filled with volatile gas.  
+                    <Description>
+                        Single short, wide veins found filled with volatile gas.
                     </Description>
                 </Choice>
                 <Choice value='strategicClouds' displayValue='Clouds'>
-                    <Description> 
+                    <Description>
                         Rare, sparsely populated clouds of volatile gas extending over several chunks.
                     </Description>
                 </Choice>
                 <Choice value='vanillaStdGen' displayValue='Clusters'>
-                    <Description> 
+                    <Description>
                         Small evenly scattered clusters of volatile gas.  This is similar to vanilla ore generation.
                     </Description>
                 </Choice>
@@ -59,7 +59,7 @@
             <OptionNumeric name='hazardGasFreq' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupHazards'>
                 <Description>Frequency multiplier for gas distributions</Description>
                 <DisplayName>Gas Freq.</DisplayName>
-            </OptionNumeric> 
+            </OptionNumeric>
             
             <OptionNumeric name='hazardGasSize' default='1'  min='0' max='5' displayState=':= if(?advOptions,"shown","hidden")' displayGroup='groupHazards'>
                 <Description>Size multiplier for gas distributions </Description>
@@ -68,7 +68,7 @@
 
         </ConfigSection>
         
-     </ConfigSection>  
+     </ConfigSection>
    
     <!--*****************************   Distributions   *************************
     *   
@@ -92,18 +92,18 @@
         
         <!--*******************   Volatile Gas   ***********************-->
         <ConfigSection>
-			<IfCondition condition=':= hazardGasDist = "vanillaStdGen"'>    
-                <StandardGen name='GasStandard' block='HarderUnderground:volatile_gas:8' inherits='PresetStandardGen'> 
+            <IfCondition condition=':= hazardGasDist = "vanillaStdGen"'>
+                <StandardGen name='GasStandard' block='HarderUnderground:volatile_gas:8' inherits='PresetStandardGen'>
                     <Description>Equivalent to vanilla minecraft ore distribution</Description>
                     <DrawWireframe>:=drawWireframes</DrawWireframe>
                     <WireframeColor>0x40b2b2b2</WireframeColor>
-                    <Setting name='Size' avg=':= 2 * hazardGasSize * _default_'/> 
+                    <Setting name='Size' avg=':= 2 * hazardGasSize * _default_'/>
                     <Setting name='Frequency' avg=':= hazardGasFreq *  _default_'/>
-                </StandardGen> 
+                </StandardGen>
             </IfCondition>
-			
-			<IfCondition condition=':= hazardGasDist = "layeredVeins"'>    
-                <Veins name='GasVeins' block='HarderUnderground:volatile_gas:8' inherits='PresetSparseVeins'>    
+            
+            <IfCondition condition=':= hazardGasDist = "layeredVeins"'>
+                <Veins name='GasVeins' block='HarderUnderground:volatile_gas:8' inherits='PresetSparseVeins'>
                     <Description>
                         Gas spawns just near the surface, and up into hills and mountains.  The veins are
                         long and thick, but sparsely filled with ore and often broken up by caves or depressions
@@ -123,22 +123,22 @@
                     <Setting name='OreDensity' avg='1' range='0'/>
                 </Veins>
                 <Veins name='GasVeinsSwamp' inherits='GasVeins'>
-                    <Description>This roughly triples the chance of finding gas in a swamp. </Description>      
+                    <Description>This roughly triples the chance of finding gas in a swamp. </Description>
                     <Setting name='MotherlodeFrequency' avg=':= 2 * _default_'/>
                     <Setting name='MotherlodeHeight' avg=':= _default_' range=':= 2 * _default_'/>
-                    <Setting name='BranchHeightLimit' avg=':= 2 * _default_'/>  
+                    <Setting name='BranchHeightLimit' avg=':= 2 * _default_'/>
                     <Setting name='OreDensity' avg='1' range='0'/>
                     <BiomeType name='Swamp'/>
-                </Veins>      
-            </IfCondition>     
+                </Veins>
+            </IfCondition>
             
-            <IfCondition condition=':= hazardGasDist = "strategicClouds"'>    
+            <IfCondition condition=':= hazardGasDist = "strategicClouds"'>
                 <Cloud name='GasCloud' block='HarderUnderground:volatile_gas:8' inherits='PresetStrategicCloud'>
-                    <Description>  
+                    <Description>
                         Diffuse gas cloud surrounded by single-block "hint" veins, found in swamps.
-                    </Description> 
+                    </Description>
                     <DrawWireframe>:=drawWireframes</DrawWireframe>
-                    <WireframeColor>0x40b2b2b2</WireframeColor> 
+                    <WireframeColor>0x40b2b2b2</WireframeColor>
                     <Setting name='DistributionFrequency' avg=':= 5 * hazardGasFreq *_default_'/>
                     <Setting name='CloudRadius' avg=':= 1.2 * hazardGasSize * _default_' range=':= 1.2 * hazardGasSize * _default_'/>
                     <Setting name='CloudThickness' avg=':= hazardGasSize * _default_' range=':= hazardGasSize * _default_'/>
@@ -146,13 +146,13 @@
                     <BiomeType name='Swamp'/>
                     <Veins name='GasHintVeins' block='HarderUnderground:volatile_gas:8' inherits='PresetHintVeins'>
                         <DrawWireframe>:=drawWireframes</DrawWireframe>
-                        <WireframeColor>0x60101010</WireframeColor> 
-                        <Setting name='MotherlodeFrequency' avg=':= 1.2 * _default_' range=':= _default_'/> 
+                        <WireframeColor>0x60101010</WireframeColor>
+                        <Setting name='MotherlodeFrequency' avg=':= 1.2 * _default_' range=':= _default_'/>
                         <Setting name='MotherlodeRangeLimit' avg=':= hazardGasSize * _default_' range=':= hazardGasSize * _default_'/>
-                    </Veins>                
+                    </Veins>
                 </Cloud>
             </IfCondition>
-		</ConfigSection>
+        </ConfigSection>
         
     </IfCondition>
     
