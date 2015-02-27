@@ -12,6 +12,80 @@
 <IfModInstalled name='HarderOres'>
 <ConfigSection>
 
+
+    <ConfigSection>
+        <BiomeSet name='coalBiomes'>
+        <!--
+                Where should it spawn? "Swamp" is really "forested wetland".
+                Even "hot, wet, and woody" includes jungle edge!, as well as jungle.
+                And wetlands can include above sea-level areas; the key is the soil/plant type.
+                
+                The point is simply: Swamps alone are not enough. So add in the jungle edges.
+        -->
+            <BiomeType name='Swamp' />
+            <Biome name='JungleEdge' />
+        
+            <!-- NOT the M version. The hilly nature and higher drainage would make
+            it impossible for the ground to have enough standing water to generate
+            the ground soil / aquatic plants of a wetland. -->
+        </BiomeSet>
+
+        <BiomeSet name='ironBiomes'>
+            <!-- Old: Frozen. But those are too rare in 1.7.10.
+                New: Cold. May change, but right now, that's snowy and most of the Taiga's.
+            -->
+            <BiomeType name='Cold' />
+            <Biome name='Mega Spruce Taiga' />
+            <Biome name='Taiga M' />
+            <BiomeType name='Ocean' weight='-1'/>
+        </BiomeSet>
+
+        <BiomeSet name='redstoneBiomes'>
+            <!-- Old: Desert. Hot and dry.
+                 New: Sandy (top block sand)?
+                 Still hot and dry, now includes the mesa's.
+                 Still rarer than before -->
+            <BiomeType name='Sandy' />
+        </BiomeSet>
+
+        <BiomeSet name='lapisBiomes'>
+            <!-- Old: Ocean.
+                 New: Ocean/Deep ocean.
+                 Also includes "Frozen Ocean", which no longer generates.
+            -->
+            <BiomeType name='Ocean' />
+        </BiomeSet>
+
+        <BiomeSet name='emeraldBiomes'>
+            <!-- Should map to extreme hills -->
+            <BiomeType name='Mountain'/>
+                <!-- "Mountain" includes Ice Mountains. Despite the name, it is "hills".
+                    Base height 0.45, variation 0.3, matches all the various hills. -->
+            <Biome name='Ice Mountains' weight='-1' />
+            <Biome name='Extreme Hills M' />
+            <Biome name='Extreme Hills+ M' />
+            <!-- Savanna Plateau M is not flat; it's the highest base and variation in the game -->
+            <!-- <Biome name='Savanna Plateau M' /> But vanilla does not put emeralds here! -->
+            <Biome name='Green\s*Hills'/> <Comment> ExtraBiomesXL </Comment>
+        </BiomeSet>
+
+        <BiomeSet name='goldBiomes'>
+            <BiomeType name='Forest'/>
+            <BiomeType name='Cold' weight='-1' />
+            <BiomeType name='Hot' weight='-1' />
+            <BiomeType name='Coniferous' weight='-1' />
+            <BiomeType name='Jungle' weight='-1' />
+            <BiomeType name='Savanna' weight='-1' />
+            
+            <Biome name='Extreme Hills+' weight='-1' />
+            <Biome name='Mega Spruce Taiga' weight='-1' />
+            
+            <Biome name='Birch Forest M' />
+            <Biome name='Birch Forest Hills M' />
+            <Biome name='Roofed Forest M' />
+        </BiomeSet>
+    </ConfigSection>
+
     <!--***************************   Options + Symbols   ***********************
     *
     *   Below are options and symbols for Coal, Iron, Gold, Redstone,
@@ -374,7 +448,7 @@
                     <Setting name='MotherlodeFrequency' avg=':= 2 * _default_'/>
                     <Setting name='MotherlodeHeight' avg=':= _default_' range=':= 2 * _default_'/>
                     <Setting name='BranchHeightLimit' avg=':= 2 * _default_'/>
-                    <BiomeType name='Swamp'/>
+                    <BiomeSet inherits='coalBiomes' />
                 </Veins>
             </IfCondition>
             
@@ -389,7 +463,7 @@
                     <Setting name='CloudRadius' avg=':= 1.2 * hardcoalSize * _default_' range=':= 1.2 * hardcoalSize * _default_'/>
                     <Setting name='CloudThickness' avg=':= hardcoalSize * _default_' range=':= hardcoalSize * _default_'/>
                     <Setting name='OreDensity' avg=':= 0.75 * _default_'/>
-                    <BiomeType name='Swamp'/>
+                    <BiomeSet inherits='coalBiomes' />
                     <Veins name='hardCoalHintVeins' block='minecraft:coal_ore' inherits='PresetHintVeins'>
                         <DrawWireframe>:=drawWireframes</DrawWireframe>
                         <WireframeColor>0x60101010</WireframeColor>
@@ -517,8 +591,7 @@
                     <Setting name='MotherlodeFrequency' avg=':= 4 * _default_'/>
                     <Setting name='MotherlodeHeight' avg=':=_default_' range=':= 2 * _default_'/>
                     <Setting name='BranchHeightLimit' avg=':= 2 * _default_'/>
-                    <BiomeType name='Cold'/>
-                    <BiomeType name='Ocean' weight='-1'/>
+                    <BiomeSet inherits='ironBiomes' />
                 </VeinsPreset>
             
             <!-- This is the first really good case for the "Preset groups" / "distribution group"
@@ -566,8 +639,7 @@
                     <Setting name='DistributionFrequency' avg=':= 2.5 * hardironFreq * _default_'/>
                     <Setting name='CloudRadius' avg=':= hardironSize * _default_' range=':= hardironSize * _default_'/>
                     <Setting name='CloudThickness' avg=':= hardironSize * _default_' range=':= hardironSize * _default_'/>
-                    <BiomeType name='Cold'/>
-                    <BiomeType name='Ocean' weight='-1'/>
+                    <BiomeSet inherits='ironBiomes' />
                     <Veins name='hardIronHintVeins' block='minecraft:iron_ore' inherits='PresetHintVeins'>
                         <DrawWireframe>:=drawWireframes</DrawWireframe>
                         <WireframeColor>0x40221100</WireframeColor>
@@ -692,7 +764,7 @@
                     <Setting name='MotherlodeFrequency' avg=':= 2 * _default_'/>
                     <Setting name='MotherlodeHeight' avg=':=_default_' range=':= _default_'/>
                     <Setting name='BranchHeightLimit' avg=':= _default_'/>
-                    <BiomeType name='Forest'/>
+                    <BiomeSet inherits='goldBiomes' />
                 </VeinsPreset>
             
             <!-- This is the first really good case for the "Preset groups" / "distribution group"
@@ -741,7 +813,7 @@
                     <Setting name='CloudRadius' avg=':= 0.8 * hardgoldSize * _default_' range=':= 0.8 * hardgoldSize * _default_'/>
                     <Setting name='CloudThickness' avg=':= 0.8 * hardgoldSize * _default_' range=':= hardgoldSize * _default_'/>
                     <Setting name='OreDensity' avg=':= 0.3 * _default_'/>
-                    <BiomeType name='Forest'/>
+                    <BiomeSet inherits='goldBiomes' />
                     <Veins name='hardGoldHintVeins' block='HarderOres:ore_gold:3' inherits='PresetHintVeins'>
                         <DrawWireframe>:=drawWireframes</DrawWireframe>
                         <WireframeColor>0x40f0b91d</WireframeColor>
@@ -794,7 +866,7 @@
                     <Setting name='MotherlodeFrequency' avg=':= 0.75 * _default_'/>
                     <ReplacesOre block='stone'/>
                     <Replaces block='minecraft:sandstone'/>
-                    <BiomeType name='Sandy'/>
+                    <BiomeSet inherits='redstoneBiomes' />
                 </Veins>
             </IfCondition>
                 
@@ -808,7 +880,7 @@
                     <Setting name='DistributionFrequency' avg=':= 4.5 * hardredstoneFreq * _default_'/>
                     <Setting name='CloudRadius' avg=':= 0.65 * hardredstoneSize * _default_' range=':= 0.5 * hardredstoneSize * _default_'/>
                     <Setting name='CloudThickness' avg=':= 0.7 * hardredstoneSize * _default_' range=':= 0.7 * hardredstoneSize * _default_'/>
-                    <BiomeType name='Sandy'/>
+                    <BiomeSet inherits='redstoneBiomes' />
                     <Veins name='hardRedstoneHintVeins' block='HarderOres:ore_redstone' inherits='PresetHintVeins'>
                         <DrawWireframe>:=drawWireframes</DrawWireframe>
                         <WireframeColor>0x40550000</WireframeColor>
@@ -943,7 +1015,7 @@
                     <ReplacesOre block='stone'/>
                     <Replaces block='minecraft:dirt'/>
                     <Replaces block='minecraft:sand'/>
-                    <BiomeType name='Ocean'/>
+                    <BiomeSet inherits='lapisBiomes' />
                 </Veins>
             </IfCondition>
                 
@@ -955,7 +1027,7 @@
                     <Setting name='DistributionFrequency' avg=':= 2.5 * hardlapisFreq * _default_'/>
                     <Setting name='CloudRadius' avg=':= 0.65 * hardlapisSize * _default_' range=':= 0.5 * hardlapisSize * _default_'/>
                     <Setting name='CloudThickness' avg=':= 0.7 * hardlapisSize * _default_' range=':= 0.7 * hardlapisSize * _default_'/> 
-                    <BiomeType name='Ocean'/>
+                    <BiomeSet inherits='lapisBiomes' />
                     <Veins name='hardLapisLazuliHintVeins' block='minecraft:lapis_ore' inherits='PresetHintVeins'>
                         <DrawWireframe>:=drawWireframes</DrawWireframe>
                         <WireframeColor>0x40000055</WireframeColor>
@@ -990,8 +1062,7 @@
                     <Setting name='Frequency' avg=':= 6/20 * hardemeraldFreq * _default_' 
                                               range=':= 2 * hardemeraldFreq'/>
                     <Setting name='Height' avg=':= 18/64 * dimension.groundLevel' range=':= 14/64 * dimension.groundLevel'/>
-                    <BiomeType name='Mountain'/>
-                    <Biome name='Green\s*Hills'/> <Comment> ExtraBiomesXL </Comment>
+                    <BiomeSet inherits='emeraldBiomes' />
                 </StandardGen>
             </IfCondition>
                 
@@ -1007,8 +1078,7 @@
                     <Setting name='SegmentRadius' avg=':= 0.85 * hardemeraldSize * _default_' range=':= 0.7 * hardemeraldSize * _default_'/>
                     <Setting name='OreDensity' avg=':= 1.2 * _default_'/>
                     <Biome name='.*' weight='0.20'/>
-                    <BiomeType name='Mountain'/>
-                    <Biome name='Green\s*Hills'/> <Comment> ExtraBiomesXL </Comment>
+                    <BiomeSet inherits='emeraldBiomes' />
                 </Veins>
                 <Veins name="hardEmeraldVeinsSilverfish" block='minecraft:monster_egg' inherits='EmeraldVeins' seed='0x3966'>
                     <Description>
@@ -1037,8 +1107,7 @@
                     <Setting name='OreRadiusMult' avg='1' range='0.2'/>
                     <Setting name='OreDensity' avg=':= 0.4 * _default_'/>
                     <Setting name='OreVolumeNoiseCutoff' avg='0'/>
-                    <BiomeType name='Mountain'/>
-                    <Biome name='Green\s*Hills'/> <Comment> ExtraBiomesXL </Comment>
+                    <BiomeSet inherits='emeraldBiomes' />
                 </Cloud>
             </IfCondition>
             
