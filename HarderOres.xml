@@ -599,26 +599,26 @@
                  to 4 other alterations. I cannot change their inherits, so I have to duplicate stuff. -->
             
                 <Veins name='hardIronVeins1Cold' inherits='CustomizedBigIronCold' block='HarderOres:ore_iron:15' >
-                    <seed> 72369 </seed> <!-- Arbitrary; keep consistent -->
+                    <seed> 272369 </seed> <!-- Arbitrary; keep consistent -->
                     <!-- Remember, these segments are thin! -->
                     <Setting name='SegmentRadius' avg=':= 1.0 * _default_' range=':= 1.0 * _default_' />
                     <!-- Center of the motherlode is the big stuff, edge is one notch less -->
                     <Setting name='MotherlodeSize' avg=':= 0.85 * _default_' range=':= _default_' />
                 </Veins>
                 <Veins name='hardIronVeins2Cold' inherits='CustomizedBigIronCold' block='HarderOres:ore_iron:9' >
-                    <seed> 72369 </seed> <!-- Arbitrary; keep consistent -->
+                    <seed> 272369 </seed> <!-- Arbitrary; keep consistent -->
                     <!-- Start forcing these veins to be wider! -->
                     <Setting name='SegmentRadius' avg=':= min(0.2, 2.0 * _default_)' range=':= min(0, 1.25 * _default_)' />
                     <!-- Center of the motherlode is the big stuff, edge is one notch less -->
                     <Setting name='MotherlodeSize' avg=':= 1.0 * _default_' range=':= _default_' />
                 </Veins>
                 <Veins name='hardIronVeins3Cold' inherits='CustomizedBigIronCold' block='HarderOres:ore_iron:6' >
-                    <seed> 72369 </seed> <!-- Arbitrary; keep consistent -->
+                    <seed> 272369 </seed> <!-- Arbitrary; keep consistent -->
                     <!-- Now the segments are noticeable -->
                     <Setting name='SegmentRadius' avg=':= min(0.4, 4.0 * _default_)' range=':= min(0, 2.0 * _default_)' />
                 </Veins>
                 <Veins name='hardIronVeins4Cold' inherits='CustomizedBigIronCold' block='HarderOres:ore_iron:1' >
-                    <seed> 72369 </seed> <!-- Arbitrary; keep consistent -->
+                    <seed> 272369 </seed> <!-- Arbitrary; keep consistent -->
                     <!-- And the segments are now "fully" joined with the "junk" level ore -->
                     <!-- This is a big enough radius to be "likely" to be joined most of the time -->
                     <!-- NB: It is possible for a diagonal 3d line to skip a few. -->
@@ -772,26 +772,26 @@
                  to 4 other alterations. I cannot change their inherits, so I have to duplicate stuff. -->
             
                 <Veins name='hardGoldVeins1Forest' inherits='CustomizedBigGoldForest' block='HarderOres:ore_gold:15' >
-                    <seed> 23891 </seed> <!-- Arbitrary; keep consistent -->
+                    <seed> 223891 </seed> <!-- Arbitrary; keep consistent -->
                     <!-- Remember, these segments are thin! -->
                     <Setting name='SegmentRadius' avg=':= 1.0 * _default_' range=':= 1.0 * _default_' />
                     <!-- Center of the motherlode is the big stuff, edge is one notch less -->
                     <Setting name='MotherlodeSize' avg=':= 0.85 * _default_' range=':= _default_' />
                 </Veins>
                 <Veins name='hardGoldVeins2Forest' inherits='CustomizedBigGoldForest' block='HarderOres:ore_gold:9' >
-                    <seed> 23891 </seed> <!-- Arbitrary; keep consistent -->
+                    <seed> 223891 </seed> <!-- Arbitrary; keep consistent -->
                     <!-- Start forcing these veins to be wider! -->
                     <Setting name='SegmentRadius' avg=':= min(0.2, 2.0 * _default_)' range=':= min(0, 1.25 * _default_)' />
                     <!-- Center of the motherlode is the big stuff, edge is one notch less -->
                     <Setting name='MotherlodeSize' avg=':= 1.0 * _default_' range=':= _default_' />
                 </Veins>
                 <Veins name='hardGoldVeins3Forest' inherits='CustomizedBigGoldForest' block='HarderOres:ore_gold:6' >
-                    <seed> 23891 </seed> <!-- Arbitrary; keep consistent -->
+                    <seed> 223891 </seed> <!-- Arbitrary; keep consistent -->
                     <!-- Now the segments are noticeable -->
                     <Setting name='SegmentRadius' avg=':= min(0.4, 4.0 * _default_)' range=':= min(0, 2.0 * _default_)' />
                 </Veins>
                 <Veins name='hardGoldVeins4Forest' inherits='CustomizedBigGoldForest' block='HarderOres:ore_gold:1' >
-                    <seed> 23891 </seed> <!-- Arbitrary; keep consistent -->
+                    <seed> 223891 </seed> <!-- Arbitrary; keep consistent -->
                     <!-- And the segments are now "fully" joined with the "junk" level ore -->
                     <!-- This is a big enough radius to be "likely" to be joined most of the time -->
                     <!-- NB: It is possible for a diagonal 3d line to skip a few. -->
